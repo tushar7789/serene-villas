@@ -1,8 +1,11 @@
+import Button from "@/_components/button";
 
 export default function Home() {
   return (
-    <div className="flex-1 justify-center items-center border-2">
-      <button>Checkout Villas</button>
+    <div className="w-screen flex flex-row justify-center mt-[calc(80px)]">
+      <Button to="/villas" type="home-button">
+        Checkout Villas
+      </Button>
     </div>
   );
 }

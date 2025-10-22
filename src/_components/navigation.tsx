@@ -4,7 +4,7 @@ import Button from './button';
 
 function Navigation() {
     return (
-        <ul className="flex flex-row justify-between h-[50px] bg-amber-400">
+        <ul className="flex flex-row justify-between h-[50px] backdrop-brightness-50 z-10">
             <li className='w-[var(--primary-button-width)] flex justify-start items-center'>
                 <Button to='/' type="primary">The Serene Villas</Button>
             </li>

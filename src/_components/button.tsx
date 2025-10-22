@@ -9,13 +9,17 @@ function Button({ children, to, type }: ButtonPropInterface) {
             href={to}
             className={`
                 flex flex-row 
-                ${type === "primary" ? 'w-[var(--primary-button-width)]' : 'w-[var(--secondary-button-width)]'} 
-                ${type === "primary" ? 'h-[var(--primary-button-height)]' : 'h-[var(--secondary-button-height)]'} 
+                text-white
                 align-middle 
                 justify-center 
                 items-center
-                hover:bg-amber-50
-                `}>
+                ${type === "primary"
+                    ? 'w-[var(--primary-button-width)] h-[var(--primary-button-height)]'
+                    : type === "secondary"
+                        ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] hover:bg-amber-50 hover:text-black'
+                        : 'w-[var(--home-button-width)] h-[var(--home-button-height)] backdrop-brightness-35 hover:backdrop-brightness-25 text-[20px]'
+                }
+            `}>
             {children}
         </Link>
     )
