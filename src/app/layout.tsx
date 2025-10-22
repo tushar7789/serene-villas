@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="grid grid-rows-2">
+      <body className="h-screen w-screen flex flex-col">
         <Navigation />
         {children}
       </body>

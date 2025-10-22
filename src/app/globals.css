@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
-/* :root {
+:root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --primary-button-width : 250px; 
+  --primary-button-height : 50px;
+  --secondary-button-width : 120px;
+  --secondary-button-height  : 50px;
 }
 
 
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
-
-
-  
-*/
+} */
 
 body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow', sans-serif;

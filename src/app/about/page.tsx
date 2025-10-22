@@ -2,7 +2,8 @@ import React from 'react'
 
 function About() {
     return (
-        <div>
+        <div className=' flex-col flex-1'>
+
             Welcome to about page
         </div>
     )
