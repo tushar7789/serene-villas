@@ -5,10 +5,10 @@ import Button from './button';
 function Navigation() {
     return (
         <ul className="flex flex-row justify-between h-[50px] backdrop-brightness-50 z-10">
-            <li className='w-[var(--primary-button-width)] flex justify-start items-center'>
+            <li>
                 <Button to='/' type="primary">The Serene Villas</Button>
             </li>
-            <li className="flex flex-row w-[var(--primary-button-width)] justify-center items-center">
+            <li className="flex flex-row w-[260px] mr-[20px] justify-between items-center">
                 <Button to='/about' type="secondary">About Us </Button>
                 <Button to='/signin' type="secondary">Sign In </Button>
             </li>

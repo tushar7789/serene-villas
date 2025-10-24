@@ -13,9 +13,11 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.4",
     "@mui/material-nextjs": "^7.3.3",
+    "antd": "^5.27.6",
     "next": "15.5.5",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "use-url-search-params": "^2.5.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
