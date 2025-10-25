@@ -67,7 +67,7 @@ function Villas() {
                                             pl-[20px]
                                             items-center
                                     ">
-                                            Cabin {villaTwoId}
+                                            Villa {villaTwoId}
                                         </span>
                                     </Button>
                                 </div>
