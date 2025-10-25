@@ -6,7 +6,7 @@ import { Oswald } from 'next/font/google';
 import "./globals.css";
 
 import Navigation from "@/_components/navigation";
-import BackgroundImage from "../../public/static_images/bg-i_16x9.png";
+import BackgroundImage from "../../public/static_images/bg-i.png";
 import { usePathname } from "next/navigation";
 
 // export const metadata: Metadata = {

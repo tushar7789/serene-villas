@@ -1,10 +1,14 @@
-import { OverlayPropsInterface } from '@/_interfaces/component_interfaces';
 import React from 'react'
+import Image from 'next/image';
 
-function Overlay({ callbackSetter }: OverlayPropsInterface) {
+import { OverlayPropsInterface } from '@/_interfaces/component_interfaces';
+import Close from "../../public/static_images/close.png"
+
+function Overlay({ type, callbackSetter }: OverlayPropsInterface) {
 
     function handleClick() {
-        callbackSetter(s => !s);
+        if (callbackSetter !== undefined)
+            callbackSetter(s => !s);
     }
 
     return (
@@ -17,24 +21,34 @@ function Overlay({ callbackSetter }: OverlayPropsInterface) {
                 flex-col
                 justify-center
                 items-center 
-                backdrop-blur-sm
+                backdrop-blur-md
         '>
-            <div className='
-                w-[screen]
-                h-[50px]
-                cursor-pointer
-            '
-                onClick={handleClick}
-            >
-                Cross
-            </div>
-            <div className='
-                w-[800px]
-                h-[400px]
-                bg-blue-300
-            '>
-                Form
-            </div>
+            {
+                type === "form" ?
+                    <>
+                        <Image
+                            src={Close}
+                            alt="close"
+                            width={30}
+                            height={30}
+                            onClick={handleClick}
+                            className='
+                                    cursor-pointer
+                                '
+                        />
+                        <div className='
+                                w-[600px]
+                                h-[440px]
+                                bg-[black]
+                                opacity-70
+                        '>
+                            Form
+                        </div>
+                    </> :
+                    <span className='text-[white] text-[30px]'>
+                        Loading...
+                    </span>
+            }
         </div>
     )
 }

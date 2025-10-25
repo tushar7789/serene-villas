@@ -9,5 +9,6 @@ export interface ButtonPropInterface {
 }
 
 export interface OverlayPropsInterface {
-    callbackSetter: Dispatch<SetStateAction<boolean>>;
+    type: string,
+    callbackSetter?: Dispatch<SetStateAction<boolean>>;
 }

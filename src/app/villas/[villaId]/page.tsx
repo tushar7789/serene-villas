@@ -37,7 +37,7 @@ function VillaId() {
             </div>
             {
                 overlayState ?
-                    <Overlay callbackSetter={setOverlayState} /> :
+                    <Overlay type="form" callbackSetter={setOverlayState} /> :
                     null
             }
         </>
