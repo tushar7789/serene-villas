@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import { OverlayPropsInterface } from '@/_interfaces/component_interfaces';
 import Close from "../../public/static_images/close.png"
+import LoginForm from './loginform';
 
 function Overlay({ type, callbackSetter }: OverlayPropsInterface) {
 
@@ -34,15 +35,19 @@ function Overlay({ type, callbackSetter }: OverlayPropsInterface) {
                             onClick={handleClick}
                             className='
                                     cursor-pointer
+                                    relative
+                                    bottom-[20px]
                                 '
                         />
                         <div className='
                                 w-[600px]
-                                h-[440px]
+                                h-[400px]
+                                relative
+                                top-[20px]
                                 bg-[black]
                                 opacity-70
                         '>
-                            Form
+                            <LoginForm />
                         </div>
                     </> :
                     <span className='text-[white] text-[30px]'>
