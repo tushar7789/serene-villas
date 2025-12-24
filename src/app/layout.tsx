@@ -26,16 +26,9 @@ export default function RootLayout({
   console.log('pathname : ', pathname);
   return (
     <html lang="en" className={oswald.className}>
-      <body className="h-screen w-screen flex flex-col">
-        <Image
-          src={BackgroundImage}
-          alt="bg-image"
-          fill={true} // Makes the image fill the parent
-          sizes="100vw"
-          className="z-0"
-        />
+      <body className="h-screen w-screen flex flex-col bg-white">
         <Navigation />
-        <div className={`flex-1 z-10  overflow-x-hidden scroll-m-0 ${pathname === '/villas' ? 'backdrop-blur-2xl' : ''}`}>
+        <div className={`flex-1 z-10  overflow-x-hidden scroll-m-0`}>
           {children}
         </div>
       </body>
