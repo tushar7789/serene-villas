@@ -12,6 +12,12 @@
 
   --home-button-width : 350px;
   --home-button-height : 70px;
+
+  /* --color-nav-cuchu-100 : '#43a150' */
+}
+
+@theme {
+  --color-nav-100 : '#fff'
 }
 
 

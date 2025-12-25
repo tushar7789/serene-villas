@@ -21,11 +21,10 @@ function Button({ children, to, type, callbackSetter }: ButtonPropInterface) {
             className={`
                 flex flex-row 
                 items-center
-                text-white
                 ${type === "primary"
                     ? 'w-[var(--primary-button-width)] h-[var(--primary-button-height)] justify-start ml-[10px] text-[22px] italic'
                     : type === "secondary"
-                        ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)]  hover:bg-[white] hover:text-black justify-center'
+                        ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)]  hover:bg-green-300 justify-center'
                         : type === 'home-button'
                             ? 'w-[var(--home-button-width)] h-[var(--home-button-height)] backdrop-brightness-35 hover:backdrop-brightness-25 text-[20px] justify-center'
                             : type === 'booking'
