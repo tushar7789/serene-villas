@@ -50,7 +50,7 @@ function DatesInputBox() {
                 <Image src={GroupIcon.src} height={25} width={25} alt=" " />
             </div>
             <div className='h-full w-[calc(16%)] flex flex-row justify-center items-center pl-[10px]'>
-                <Button to={'/'} type="search">Search</Button>
+                <Button to="/villas" type="search">Search</Button>
             </div>
         </div>
     )

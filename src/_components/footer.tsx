@@ -79,7 +79,7 @@ const FooterLogos = () => {
                 FooterLogoList.map((ele, ind) => {
                     return (
                         <span className='h-[40px] w-[40px] flex justify-center items-center' key={ind}>
-                            <Image src={ele.src} height={25} width={25} alt="" />
+                            <Image src={ele.src} height={25} width={25} alt="" style={{ cursor: 'pointer' }} />
                         </span>
                     )
                 })
