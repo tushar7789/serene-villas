@@ -10,7 +10,7 @@ function Navigation() {
             </li>
             <li className="flex flex-row w-[260px] mr-[20px] justify-between items-center">
                 <Button to='/villas' type="secondary">Villas </Button>
-                <Button to='/about' type="secondary">About Us </Button>
+                <Button to='/villas' type="secondary">Sign Up </Button>
                 <Button to='/signin' type="secondary">Sign In </Button>
             </li>
         </ul>

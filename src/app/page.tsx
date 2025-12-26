@@ -1,10 +1,11 @@
 import Features from "@/_components/featuresBanner";
+import DatesInputBox from "@/_components/datesInputBox";
 
 export default function Home() {
   return (
     <div className="
             w-screen 
-            h-[350px] 
+            h-[380px] 
             px-[150px] 
             flex 
             flex-col 
@@ -21,10 +22,10 @@ export default function Home() {
           Offers valid until &nbsp; <i>31st December</i>
         </span>
       </div>
-      <div className="h-[150px] w-full bg-pink-400 ">
-        To Where Input
+      <div className="h-[130px] w-full">
+        <DatesInputBox />
       </div>
-      <div className="h-[60px] w-full bg-yellow-400 flex flex-row justify-around items-center">
+      <div className="h-[110px] w-full  flex flex-row justify-around items-center">
         <Features />
       </div>
     </div>

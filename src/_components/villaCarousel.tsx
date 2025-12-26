@@ -5,7 +5,7 @@ import { Carousel } from "antd";
 import { CarouselRef } from 'antd/es/carousel';
 import Image from 'next/image';
 
-import ImageList from '@/utils/utils';
+import { ImageList } from '@/utils/utils';
 import Arrow from '@/_components/arrows';
 
 function VillaCarousel() {

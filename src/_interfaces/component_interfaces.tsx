@@ -12,3 +12,8 @@ export interface OverlayPropsInterface {
     type: string,
     callbackSetter?: Dispatch<SetStateAction<boolean>>;
 }
+
+export interface DatePickerInterface {
+    type: string,
+    datePickerType?: string
+}
