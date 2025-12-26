@@ -13,6 +13,11 @@ import RoomServiceImgF from "../../public/static_images/room-service-f.png"
 import SecurityImgF from "../../public/static_images/security-f.png"
 import CommunityImgF from "../../public/static_images/community-f.png"
 
+import InstagramLogo from "../../public/static_images/insta_logo.png"
+import YoutubeLogo from "../../public/static_images/yt_logo.png"
+import LinkedinLogo from "../../public/static_images/linkedin_logo.png"
+import FacebookLogo from "../../public/static_images/fb_logo.png"
+
 const ImageList = [
     [LivingRoomImg, "Living Room"],
     [BedroomImg, "Bedroom"],
@@ -31,4 +36,11 @@ const FeaturesImageList = [
     CommunityImgF
 ]
 
-export { ImageList, FeaturesImageList };
+const FooterLogoList = [
+    InstagramLogo,
+    FacebookLogo,
+    YoutubeLogo,
+    LinkedinLogo
+]
+
+export { ImageList, FeaturesImageList, FooterLogoList };
