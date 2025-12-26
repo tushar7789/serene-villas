@@ -7,7 +7,7 @@ import { ButtonPropInterface } from '@/_interfaces/component_interfaces'
 function Button({ children, to, type, callbackSetter }: ButtonPropInterface) {
 
     function handleClick(e: MouseEvent) {
-        if (type === 'booking') {
+        if (type === 'booking' || type === 'secondary') {
             e.preventDefault();
             if (callbackSetter !== undefined) {
                 callbackSetter(s => !s);
@@ -29,7 +29,9 @@ function Button({ children, to, type, callbackSetter }: ButtonPropInterface) {
                             ? 'w-[170px] h-[40px] cursor-pointer justify-center bg-green-400 rounded-sm'
                             : type === 'booking'
                                 ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] text-[20px] backdrop-opacity-90 hover:bg-[white] hover:text-[black] justify-center'
-                                : ''
+                                : type === 'selected'
+                                    ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] bg-green-400 justify-center'
+                                    : ''
                 }
             `}
             onClick={handleClick}

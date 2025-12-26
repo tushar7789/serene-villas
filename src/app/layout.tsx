@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from 'next/font/google';
 import "./globals.css";
 
-import Navigation from "@/_components/navigation";
+import RootProvider from "@/_components/rootProvider";
 
 export const metadata: Metadata = {
   title: "Serene Villas",
@@ -20,11 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={poppins.className}>
-      <body className="h-screen w-screen flex flex-col" >
-        <Navigation />
-        <div className={`flex-1 overflow-x-hidden scroll-m-0`}>
-          {children}
-        </div>
+      <body className="h-screen w-screen flex flex-col z-10">
+        <RootProvider child={children} />
       </body>
     </html>
   );

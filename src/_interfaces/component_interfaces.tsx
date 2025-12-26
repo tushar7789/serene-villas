@@ -9,11 +9,15 @@ export interface ButtonPropInterface {
 }
 
 export interface OverlayPropsInterface {
-    type: string,
+    type?: string,
     callbackSetter?: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface DatePickerInterface {
     type: string,
     datePickerType?: string
+}
+
+export interface RootProviderInterface {
+    child: React.ReactNode
 }
