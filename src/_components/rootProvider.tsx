@@ -4,19 +4,21 @@ import React, { createContext, useState } from 'react'
 
 import Navigation from './navigation';
 import SigninModal from './signinModal';
-import { RootProviderInterface } from '@/_interfaces/component_interfaces';
+import { OverlayPropsInterface, RootProviderInterface } from '@/_interfaces/component_interfaces';
+import VillaCarousel from './villaCarousel';
 
 // could we use in case there is a need to have global state
-// const rootContext = createContext({
-//     'siginInModalOverlay': false
-// })
+export const RootContext = createContext<OverlayPropsInterface>({
+    callbackSetter: undefined
+});
 
 const RootProvider: React.FC<RootProviderInterface> = ({ child }) => {
 
     const [signInModalOverlay, setSignInModalOverlay] = useState(false);
+    const [albumOverlay, setAlbumOverlay] = useState<boolean>(true);
 
     return (
-        <>
+        <RootContext value={{ callbackSetter: setAlbumOverlay }}>
             <Navigation callbackSetter={setSignInModalOverlay} />
             <div className={`flex-1 overflow-x-hidden scroll-m-0 z-10`}>
                 {child}
@@ -25,7 +27,11 @@ const RootProvider: React.FC<RootProviderInterface> = ({ child }) => {
                 signInModalOverlay ?
                     <SigninModal callbackSetter={setSignInModalOverlay} /> : null
             }
-        </>
+            {
+                albumOverlay ?
+                    <VillaCarousel callbackSetter={setAlbumOverlay} /> : null
+            }
+        </RootContext>
     )
 }
 

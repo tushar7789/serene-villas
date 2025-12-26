@@ -1,45 +1,61 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import Divider from '@mui/material/Divider';
 
 import Button from '@/_components/button';
-import VillaCarousel from '@/_components/villaCarousel';
 import Overlay from '@/_components/overlay';
+
+import CabinImg from "../../../../public/static_images/balcony-i.png"
+import VillaSpecsComp from '@/_components/villaSpecsComp';
+import AlbumIcon from "../../../../public/static_images/album-icon.png"
+import { RootContext } from '@/_components/rootProvider';
 
 function VillaId() {
     const pathname = usePathname();
     const id = pathname.split("/")[2];
 
     const [overlayState, setOverlayState] = useState(false);
+    const { callbackSetter } = useContext(RootContext);
+
+    const handleAlbumOverlayOpen = () => {
+        if (callbackSetter !== undefined) {
+            callbackSetter(s => !s);
+        }
+    }
 
     return (
         <>
-            <div className='flex flex-row h-[460px] width-[820px] items-center justify-between mt-[30px] mx-[50px] backdrop-brightness-30'>
-                <div className='
-                            flex 
-                            flex-col
-                            items-start 
-                            justify-between
-                            w-[380px]  
-                            h-[400px]
-                            text-white 
-                            ml-[30px]
-                    '>
-                    <span className='text-[100px]'>
-                        Villa #{id}
-                    </span>
-                    <div className='flex flex-row w-[380px] items-center justify-end '>
-                        <Button to="/" type="booking" callbackSetter={setOverlayState}>Book</Button>
+            <div className='h-full w-screen px-[150px] flex flex-row items-center justify-between'>
+                <div className='h-[calc(85%)] w-[1000px] flex flex-row items-center justify-between bg-gradient-to-r from-gray-100/60 to-gray-200/40 rounded-xl shadow-2xl'>
+                    <div className='h-full w-[420px] flex flex-col items-start justify-between '>
+                        <Image src={CabinImg.src} height={350} width={420} alt="" style={{ borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
+                        <div className='h-[225px] w-full pl-[20px] flex flex-col justify-between items-center border-r-0 border-r-black'>
+                            <ul className={`h-[160px] w-[365px] text-[14px] pt-[40px]`}>
+                                <VillaSpecsComp />
+                            </ul>
+                            <Divider variant="middle" flexItem />
+                            <p className='h-[40px] w-full px-[15px] flex justify-end text-[20px]'>Total Price - Rs. 43200</p>
+                        </div>
+                    </div>
+                    <Image src={AlbumIcon.src} alt="" height={30} width={30} style={{ position: 'relative', zIndex: '10', bottom: '210px', right: '50px', cursor: 'pointer' }} onClick={handleAlbumOverlayOpen} />
+                    <div className='h-full w-[500px] flex flex-col items-start justify-between text-white bg-red-400'>
+                        <span className='text-[100px]'>
+                            Villa #{id}
+                        </span>
+                        <div className='flex flex-row w-[380px] items-center justify-end '>
+                            <Button to="/" type="booking" callbackSetter={setOverlayState}>Book</Button>
+                        </div>
                     </div>
                 </div>
-                <VillaCarousel />
             </div>
-            {
+            {/* {
                 overlayState ?
                     <Overlay type="form" callbackSetter={setOverlayState} /> :
                     null
-            }
+            } */}
         </>
     )
 }

@@ -16,7 +16,7 @@ const SigninModal: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
     }
 
     return (
-        <div className='z-20 absolute h-screen w-screen bg-black/40 text-[50px] flex items-center justify-center'>
+        <div className='z-20 absolute h-screen w-screen bg-black/70 text-[50px] flex items-center justify-center'>
             <div className='h-[450px] w-[400px] p-[25px] flex flex-col justify-start bg-gray-200 rounded-md'>
                 <p className='h-[50px] w-full flex justify-between items-center text-[33px]'>
                     <i>TSV</i>
