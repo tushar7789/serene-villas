@@ -18,6 +18,10 @@ import YoutubeLogo from "../../public/static_images/yt_logo.png"
 import LinkedinLogo from "../../public/static_images/linkedin_logo.png"
 import FacebookLogo from "../../public/static_images/fb_logo.png"
 
+import CampusEntryImage from "../../public/static_images/campus-entry.png"
+import CampusAmenitiesImage from "../../public/static_images/campus-amenities.png"
+import CampusDiningImage from "../../public/static_images/campus-dining.png"
+
 const ImageList = [
     [LivingRoomImg, "Living Room"],
     [BedroomImg, "Bedroom"],
@@ -43,4 +47,10 @@ const FooterLogoList = [
     LinkedinLogo
 ]
 
-export { ImageList, FeaturesImageList, FooterLogoList };
+const DetailsCardImages = [
+    CampusEntryImage,
+    CampusAmenitiesImage,
+    CampusDiningImage
+]
+
+export { ImageList, FeaturesImageList, FooterLogoList, DetailsCardImages };

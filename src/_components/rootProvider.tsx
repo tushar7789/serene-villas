@@ -15,7 +15,7 @@ export const RootContext = createContext<OverlayPropsInterface>({
 const RootProvider: React.FC<RootProviderInterface> = ({ child }) => {
 
     const [signInModalOverlay, setSignInModalOverlay] = useState(false);
-    const [albumOverlay, setAlbumOverlay] = useState<boolean>(true);
+    const [albumOverlay, setAlbumOverlay] = useState<boolean>(false);
 
     return (
         <RootContext value={{ callbackSetter: setAlbumOverlay }}>
