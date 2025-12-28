@@ -30,6 +30,7 @@ const ImageList = [
     [BalconyImg, "Balcony"]
 ];
 
+
 const FeaturesImageList = [
     KitchenImgF,
     RecreationImgF,

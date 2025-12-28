@@ -20,13 +20,13 @@ const SigninModal: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
             <div className='h-[450px] w-[400px] p-[25px] flex flex-col justify-start bg-gray-200 rounded-md'>
                 <p className='h-[50px] w-full flex justify-between items-center text-[33px]'>
                     <i>TSV</i>
-                    <Image src={Cross.src} height={20} width={20} alt="" style={{ cursor: 'pointer' }} onClick={handleOverlayClose} />
+                    <Image src={Cross.src} height={40} width={40} alt="" style={{ cursor: 'pointer' }} onClick={handleOverlayClose} />
                 </p>
                 {
                     Array.from({ length: 4 }, (ele, ind) => {
                         return (
                             <div className='h-[50px] w-full px-[30px] mt-[20px] shadow-md flex justify-between items-center rounded-md cursor-pointer hover:shadow-2xl' key={ind}>
-                                <Image src={Cross.src} height={20} width={20} alt="" style={{ cursor: 'pointer' }} />
+                                <Image src={Cross.src} height={40} width={40} alt="" style={{ cursor: 'pointer' }} />
                                 <span className='h-full w-[260px]  flex justify-center items-center text-[16px]'>Sign in with Cross</span>
                             </div>
                         )
