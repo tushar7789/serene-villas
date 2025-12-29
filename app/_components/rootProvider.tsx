@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react'
 
 import Navigation from './navigation';
 import SigninModal from './signinModal';
-import { OverlayPropsInterface, RootProviderInterface } from '@/_interfaces/component_interfaces';
+import { OverlayPropsInterface, RootProviderInterface } from '../_interfaces/component_interfaces';
 import VillaCarousel from './villaCarousel';
 
 // could we use in case there is a need to have global state

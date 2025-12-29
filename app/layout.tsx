@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from 'next/font/google';
 import "./globals.css";
 
-import RootProvider from "@/_components/rootProvider";
+import RootProvider from "./_components/rootProvider";
 
 export const metadata: Metadata = {
   title: "Serene Villas",

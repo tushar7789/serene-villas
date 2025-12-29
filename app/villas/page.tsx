@@ -4,9 +4,9 @@ import Image from "next/image";
 import Divider from '@mui/material/Divider';
 
 import Cabin_1 from "../../../public/static_images/living-room-i.png";
-import Button from "@/_components/button";
-import DatesInputBox from "@/_components/datesInputBox";
-import VillaSpecsComp from "@/_components/villaSpecsComp";
+import Button from "../_components/button";
+import DatesInputBox from "../_components/datesInputBox";
+import VillaSpecsComp from "../_components/villaSpecsComp";
 
 const Villas = () => {
 

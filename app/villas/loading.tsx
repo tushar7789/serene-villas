@@ -1,4 +1,4 @@
-import Overlay from '@/_components/overlay'
+import Overlay from '../_components/overlay'
 import React from 'react'
 
 function loading() {

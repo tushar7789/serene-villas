@@ -5,11 +5,11 @@ import { Carousel } from "antd";
 import { CarouselRef } from 'antd/es/carousel';
 import Image from 'next/image';
 
-import { ImageList } from '@/utils/utils';
+import { ImageList } from '../_utils/utils';
 import LeftArrow from '../../public/static_images/left-arrow.png'
 import RightArrow from "../../public/static_images/right-arrow.png"
 import Cross from "../../public/static_images/cross.png"
-import { OverlayPropsInterface } from '@/_interfaces/component_interfaces';
+import { OverlayPropsInterface } from '../_interfaces/component_interfaces';
 
 const VillaCarousel: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
     const len = ImageList.length;

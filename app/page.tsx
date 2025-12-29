@@ -1,7 +1,7 @@
-import Features from "@/_components/featuresBanner";
-import DatesInputBox from "@/_components/datesInputBox";
-import DetailsContainer from "@/_components/detailsContainer";
-import Footer from "@/_components/footer";
+import Features from "./_components/featuresBanner";
+import DatesInputBox from "./_components/datesInputBox";
+import DetailsContainer from "./_components/detailsContainer";
+import Footer from "./_components/footer";
 
 export default function Home() {
   return (

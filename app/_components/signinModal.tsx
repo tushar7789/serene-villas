@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import Button from './button';
 import Cross from "../../public/static_images/cross.png"
-import { OverlayPropsInterface } from '@/_interfaces/component_interfaces';
+import { OverlayPropsInterface } from '../_interfaces/component_interfaces';
 
 const SigninModal: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 

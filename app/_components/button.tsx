@@ -2,7 +2,7 @@
 
 import React, { MouseEvent } from 'react'
 import Link from 'next/link'
-import { ButtonPropInterface } from '@/_interfaces/component_interfaces'
+import { ButtonPropInterface } from '../_interfaces/component_interfaces'
 
 function Button({ children, to, type, callbackSetter }: ButtonPropInterface) {
 

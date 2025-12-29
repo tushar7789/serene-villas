@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation';
 import Divider from '@mui/material/Divider';
 import Button from './button';
 
-import { OverlayPropsInterface } from '@/_interfaces/component_interfaces';
+import { OverlayPropsInterface } from '../_interfaces/component_interfaces';
+
 
 const Navigation: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 
