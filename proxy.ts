@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { API_AUTH_PREFIX, AUTH_ROUTES, PROTECTED_ROUTES } from "./routes";
 import { auth } from "./auth";
 
-
-
 export default async function proxy(req : NextRequest) {
     const session = await auth();
     const pathname = req.nextUrl.pathname;
