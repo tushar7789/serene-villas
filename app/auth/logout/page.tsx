@@ -1,21 +1,20 @@
 import React from 'react'
-
-
-import { auth, signOut } from "../../auth";
+import { auth, signOut } from "../../../auth";
 import { notFound } from "next/navigation";
 
 const PageONE = async () => {
     const session = await auth();
-    if (!session) return notFound();
+    // if (!session) return notFound();
+    console.log("session: ", session);
     return (
         <form
             action={async () => {
-                // "use server";
+                "use server"
                 await signOut();
             }}
         >
             <button type="submit">Log Out</button>
-        </form>
+        </form >
     )
 }
 

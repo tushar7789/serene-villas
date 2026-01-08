@@ -1,38 +1,37 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthConfig } from "next-auth";
 import { authConfig } from "./lib/auth.config";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import db from "./lib/db";
+import {PrismaAdapter} from "@next-auth/prisma-adapter";
+import {prisma} from "./lib/prisma"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
  ...authConfig,
- adapter: PrismaAdapter(db),
+ adapter: PrismaAdapter(prisma),
  session: {
   strategy: "jwt",
  },
  pages: {
-  signIn: "/login",
+  signIn: "/auth/login",
+  signOut: "/auth/logout"
  },
  callbacks: {
-  async jwt({ token, user }) {
-   if (user) {
-    // get user from db with the email
-    // if there is no user with the email, create new user
-    // else set the user data to token
-   }
+  async jwt({ token, user, account }) {
+    // console.log("account in jwt: ", {account, user, token});
+    if (account) {
+        token.accessToken = account.access_token;
+    }
 
-   return token;
+    if(user) {
+        token.id = user.id;
+    }
+    return token;
   },
 
   async session({ session, token }) {
-   if (token) {
-    // set the token data to session
-   }
+    // console.log("account in session: ", {session, token});
+    session.user.id = token.id as string;
+    (session.user as any).accessToken = token.accessToken; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-   return session;
-  },
-
-  redirect() {
-   return "/login";
+    return session;
   },
  },
-});
+} satisfies NextAuthConfig);

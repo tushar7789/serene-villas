@@ -4,13 +4,19 @@ import React from 'react'
 import { usePathname } from 'next/navigation';
 import Divider from '@mui/material/Divider';
 import Button from './button';
+import { signOut } from '../../auth';
 
 import { OverlayPropsInterface } from '../_interfaces/component_interfaces';
+import { useSession } from 'next-auth/react';
 
 
 const Navigation: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 
     const pathname = usePathname().split('/')[1];
+
+    const { data: session, status } = useSession();
+
+    console.log("sesssssstttt:,", { session, status });
 
     return (
         <>
@@ -30,9 +36,10 @@ const Navigation: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
                             <Button to='/signin' type="secondary" callbackSetter={callbackSetter}>Sign In</Button>
                     }
                     {
-                        pathname === 'menu' ?
-                            <Button to='/menu' type="selected">Menu</Button> :
-                            <Button to='/menu' type="secondary">Menu</Button>
+                        // pathname === 'menu' ?
+                        //     <Button to='/menu' type="selected">Menu</Button> :
+                        //     <Button to='/menu' type="secondary">Menu</Button>
+                        <button type="button" onClick={() => signOut()}>log out</button>
                     }
                 </li>
             </ul>

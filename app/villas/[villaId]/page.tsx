@@ -5,13 +5,13 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Divider from '@mui/material/Divider';
 
-import Button from '@/_components/button';
-import Overlay from '@/_components/overlay';
+import Button from '../../_components/button';
+import Overlay from '../../_components/overlay'
 
-import CabinImg from "../../../../public/static_images/balcony-i.png"
-import VillaSpecsComp from '@/_components/villaSpecsComp';
-import AlbumIcon from "../../../../public/static_images/album-icon.png"
-import { RootContext } from '@/_components/rootProvider';
+import CabinImg from "../../../public/static_images/balcony-i.png"
+import VillaSpecsComp from '../../_components/villaSpecsComp';
+import AlbumIcon from "../../../public/static_images/album-icon.png"
+import { RootContext } from '../../_components/rootProvider';
 
 function VillaId() {
     const pathname = usePathname();

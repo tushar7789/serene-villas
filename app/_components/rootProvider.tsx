@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useState } from 'react'
-
+import { SessionProvider, useSession } from 'next-auth/react'
 import Navigation from './navigation';
 import SigninModal from './signinModal';
 import { OverlayPropsInterface, RootProviderInterface } from '../_interfaces/component_interfaces';
@@ -18,20 +18,22 @@ const RootProvider: React.FC<RootProviderInterface> = ({ child }) => {
     const [albumOverlay, setAlbumOverlay] = useState<boolean>(false);
 
     return (
-        <RootContext value={{ callbackSetter: setAlbumOverlay }}>
-            <Navigation callbackSetter={setSignInModalOverlay} />
-            <div className={`flex-1 overflow-x-hidden scroll-m-0 z-10`}>
-                {child}
-            </div>
-            {
-                signInModalOverlay ?
-                    <SigninModal callbackSetter={setSignInModalOverlay} /> : null
-            }
-            {
-                albumOverlay ?
-                    <VillaCarousel callbackSetter={setAlbumOverlay} /> : null
-            }
-        </RootContext>
+        <SessionProvider>
+            <RootContext value={{ callbackSetter: setAlbumOverlay }}>
+                <Navigation callbackSetter={setSignInModalOverlay} />
+                <div className={`flex-1 overflow-x-hidden scroll-m-0 z-10`}>
+                    {child}
+                </div>
+                {
+                    signInModalOverlay ?
+                        <SigninModal callbackSetter={setSignInModalOverlay} /> : null
+                }
+                {
+                    albumOverlay ?
+                        <VillaCarousel callbackSetter={setAlbumOverlay} /> : null
+                }
+            </RootContext>
+        </SessionProvider>
     )
 }
 
