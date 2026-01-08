@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { API_AUTH_PREFIX, AUTH_ROUTES, PROTECTED_ROUTES } from "./routes";
-import { auth } from "./auth";
 
 export default async function proxy(req : NextRequest) {
-    const session = await auth();
     const pathname = req.nextUrl.pathname;
     console.log("pathname:", pathname);
+
+
+    const origin = req.nextUrl.origin;
+    const res = await fetch(`${origin}/api/auth/session`, 
+                        {headers: { cookie: req.headers.get('cookie') || '' },});
+    const session = await res.json();
 
     const isAccessingApiAuthRoute = pathname.startsWith(API_AUTH_PREFIX);
     const isAccessingAuthRoute = AUTH_ROUTES.some(route => pathname.startsWith(route));
@@ -13,8 +17,7 @@ export default async function proxy(req : NextRequest) {
 
     
     if (isAccessingApiAuthRoute) {
-        return NextResponse.redirect(new URL("/auth/success", req.url));
-        // return NextResponse.next();
+        return NextResponse.next();
     }
 
     if (isAccessingAuthRoute) {
