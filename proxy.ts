@@ -1,17 +1,6 @@
-import NextAuth from "next-auth";
-import {getToken} from "next-auth/jwt"
 import { NextRequest, NextResponse } from "next/server";
 import { API_AUTH_PREFIX, AUTH_ROUTES, PROTECTED_ROUTES } from "./routes";
 import { auth } from "./auth";
-
-
-// // export default auth(req => {
-// //  const pathname = req.nextUrl.pathname;
-// // //  console.log("pathname : ", pathname);
-// //  const token = getToken({req, secret : process.env.NEXTAUTH_SECRET!});
-// // console.log("tokennnnnL:", token);
-
-
 
 
 
