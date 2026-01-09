@@ -14,9 +14,9 @@ const Navigation: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 
     const pathname = usePathname().split('/')[1];
 
-    const { data: session, status } = useSession();
+    const { data, status } = useSession();
 
-    console.log("sesssssstttt:,", { session, status });
+    console.log("sesssssstttt:,", { data, status });
 
     return (
         <>

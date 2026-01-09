@@ -1,6 +1,6 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import { authConfig } from "./lib/auth.config";
-import {PrismaAdapter} from "@auth/prisma-adapter";
+// import {PrismaAdapter} from "@auth/prisma-adapter";
 import {prisma} from "./lib/prisma"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -19,10 +19,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     if (account) {
         token.accessToken = account.access_token;
     }
-
     if(user) {
         token.id = user.id;
     }
+    if(user?.email){
+        await prisma.user.upsert({
+            where: { email: user?.email },
+            update: {
+                email: user?.email, 
+                name: user?.name 
+            },
+            create: { 
+                email: user?.email, 
+                name: user?.name 
+            }
+        })
+    }
+    
     return token;
   },
 
