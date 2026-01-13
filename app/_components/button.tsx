@@ -31,7 +31,7 @@ function Button({ children, to, type, callbackSetter }: ButtonPropInterface) {
                                 ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] text-[20px] backdrop-opacity-90 hover:bg-[white] hover:text-[black] justify-center'
                                 : type === 'selected'
                                     ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] bg-green-400 justify-center'
-                                    : 'h-full w-full px-[40px] flex justify-between items-center bg-gray-red hover:shadow-xl'
+                                    : 'h-50 w-full flex justify-between items-center hover:shadow-xl'
                 }
             `}
             onClick={handleClick}
