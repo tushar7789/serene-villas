@@ -12,8 +12,8 @@ import { OverlayPropsInterface } from '../_interfaces/component_interfaces';
 
 const Navigation: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
     const pathname = usePathname().split('/')[1];
-    const { data, status } = useSession();
-    console.log("sesssssstttt:,", { data, status });
+    // const { data, status } = useSession();
+    // console.log("sesssssstttt:,", { data, status });
 
     return (
         <>

@@ -20,15 +20,15 @@ const Villas = () => {
                     Array.from({ length: 5 }, (v, ind) => {
 
                         return (
-                            <div className='h-[300px] w-screen px-[150px] mt-[20px]' key={ind}>
+                            <div className='h-[400px] w-screen px-30 mt-4 bg-green-300' key={ind}>
                                 <Button to={`villas/${ind + 1}`} type={"image-button"}>
-                                    <Image src={Cabin_1} alt="cabin" height={340} width={450} style={{ borderRadius: '8px' }} />
-                                    <div className="h-[260px] w-[400px] flex flex-col items-center rounded-r-xl ">
-                                        <ul className={`h-[180px] w-[370px] text-[14px] pt-[20px]`}>
+                                    <Image src={Cabin_1} alt="cabin" height={200} width={230} style={{ borderRadius: '8px' }} />
+                                    <div className="h-35 w-160 flex flex-col items-center rounded-r-xl bg-amber-400">
+                                        <ul className={`h-20 w-full text-[14px] pt-4`}>
                                             <VillaSpecsComp />
                                         </ul>
                                         <Divider variant="middle" flexItem />
-                                        <div className="h-[60px] w-full flex items-center justify-end">
+                                        <div className="h-10 w-full flex items-center justify-end">
                                             Price : Rs. 42300
                                         </div>
                                     </div>
