@@ -5,15 +5,15 @@ import Divider from '@mui/material/Divider';
 
 import Cabin_1 from "../../public/static_images/living-room-i.png";
 import Button from "../_components/button";
-import DatesInputBox from "../_components/datesInputBox";
 import VillaSpecsComp from "../_components/villaSpecsComp";
+import TestComp from "../test/page";
 
 const Villas = () => {
 
     return (
         <>
-            <div className="h-35 w-screen px-35 flex items-center justify-start bg-white sticky top-0 z-20">
-                <DatesInputBox />
+            <div className="h-35 w-screen px-40 pb-10 flex items-end justify-start bg-linear-to-r from-gray-50 to-gray-100 sticky top-0 z-20">
+                <TestComp />
             </div>
             <div className="h-100 w-screen flex flex-col justify-start items-center">
                 {

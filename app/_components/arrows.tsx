@@ -11,8 +11,12 @@ export default function Arrow({ mode }: modeType) {
         <>
             {
                 mode === "left" ?
-                    <Image src={Left} alt="left" className="h-[30px] w-[30px] cursor-pointer" /> :
-                    <Image src={Right} alt="right" className="h-[30px] w-[30px] cursor-pointer" />
+                    <Image src={Left} alt="left" className="h-7 w-7 cursor-pointer" /> :
+                    mode === "right" ?
+                        <Image src={Right} alt="right" className="h-7 w-7 cursor-pointer" /> :
+                        mode === "up" ?
+                            <Image src={Left} alt="right" className="h-7 w-7 cursor-pointer rotate-90" /> :
+                            <Image src={Right} alt="right" className="h-7 w-7 cursor-pointer rotate-90" />
             }
         </>
     );

@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import React, { Key } from 'react'
+
+import Star from "../../public/static_images/star.png"
 
 interface tempInterface {
     name?: string,
@@ -11,8 +14,8 @@ interface tempInterface {
 
 const villaSpecsArr = [
     {
-        "name": "The Leelawati Palace",
-        "area": "Basantkunj, New Delhi",
+        "name": "Villa 2",
+        "area": "Waterfall Conclave",
         "rating": "4",
         "ammenities": [
             ["Kitchen", "1"],
@@ -21,7 +24,7 @@ const villaSpecsArr = [
             // ["LivingRoom", "2"],
             // ["Balcony", "4"]
         ],
-        "cost": "22000",
+        "cost": "22,000",
     }
 ]
 
@@ -31,11 +34,11 @@ const VillaSpecsComp = () => {
             {
                 villaSpecsArr.map((ele, ind) => {
                     return (
-                        <>
+                        <div key={ind}>
                             <TitleComp name={ele.name} area={ele.area} />
                             <RatingsComp rating={ele.rating} />
                             <SpecDetailComp cost={ele.cost} ammenities={ele.ammenities} />
-                        </>
+                        </div>
                     )
                 })
             }
@@ -45,8 +48,8 @@ const VillaSpecsComp = () => {
 
 const TitleComp: React.FC<tempInterface> = ({ name, area }) => {
     return (
-        <div className="h-13 w-full ">
-            <div className='h-8 w-full text-blue-800 text-2xl font-bold '>{name}</div>
+        <div className="h-10 w-full">
+            <div className='h-8 w-full mr-5 text-green-700 text-2xl font-bold'>{name}</div>
             <div className='h-5 w-full text-gray-600 text-xs font-bold '><i>{area}</i></div>
         </div>
     )
@@ -54,11 +57,11 @@ const TitleComp: React.FC<tempInterface> = ({ name, area }) => {
 
 const RatingsComp: React.FC<tempInterface> = ({ rating }) => {
     return (
-        <div className='h-8 w-full flex items-center '>
+        <div className='h-full w-full flex justify-start items-center mt-4'>
             {
                 Array.from({ length: Number(rating) }, (ele, ind) => {
                     return (
-                        <span key={ind}>⭐</span>
+                        <Image src={Star.src} height={20} width={20} alt="" key={ind} />
                     )
                 })
             }
