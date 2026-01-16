@@ -34,7 +34,7 @@ function VillaId() {
                         <Image src={CabinImg.src} height={350} width={420} alt="" style={{ borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
                         <div className='h-[225px] w-full flex flex-col justify-between items-center border-r-0 border-r-black'>
                             <ul className='h-[160px] w-[365px] text-[14px] pt-[40px]'>
-                                <VillaSpecsComp />
+                                NOt Anymore
                             </ul>
                             <Divider variant="middle" flexItem />
                             <p className='h-[40px] w-full px-[20px] flex justify-between text-[20px]'>

@@ -1,52 +1,33 @@
 import Image from 'next/image'
-import React, { Key } from 'react'
+import React from 'react'
 
 import Star from "../../public/static_images/star.png"
 
-interface tempInterface {
+interface UtilityCompInterface {
     name?: string,
     area?: string,
     rating?: string,
     cost?: string,
     ammenities?: Array<Array<string>>,
-    key?: Key
 }
 
-const villaSpecsArr = [
-    {
-        "name": "Villa 2",
-        "area": "Waterfall Conclave",
-        "rating": "4",
-        "ammenities": [
-            ["Kitchen", "1"],
-            ["Bathroom", "2"],
-            // ["Bedroom", "3"],
-            // ["LivingRoom", "2"],
-            // ["Balcony", "4"]
-        ],
-        "cost": "22,000",
-    }
-]
+interface VillaSpecsCompInterface {
+    villaDetails: UtilityCompInterface
+}
 
-const VillaSpecsComp = () => {
+const VillaSpecsComp: React.FC<VillaSpecsCompInterface> = ({ villaDetails }) => {
     return (
         <div className={`h-full w-full text-[14px] pt-4`}>
-            {
-                villaSpecsArr.map((ele, ind) => {
-                    return (
-                        <div key={ind}>
-                            <TitleComp name={ele.name} area={ele.area} />
-                            <RatingsComp rating={ele.rating} />
-                            <SpecDetailComp cost={ele.cost} ammenities={ele.ammenities} />
-                        </div>
-                    )
-                })
-            }
+            <div>
+                <TitleComp name={villaDetails.name} area={villaDetails.area} />
+                <RatingsComp rating={villaDetails.rating} />
+                <SpecDetailComp cost={villaDetails.cost} ammenities={villaDetails.ammenities} />
+            </div>
         </div>
     )
 }
 
-const TitleComp: React.FC<tempInterface> = ({ name, area }) => {
+const TitleComp: React.FC<UtilityCompInterface> = ({ name, area }) => {
     return (
         <div className="h-10 w-full">
             <div className='h-8 w-full mr-5 text-green-700 text-2xl font-bold'>{name}</div>
@@ -55,7 +36,7 @@ const TitleComp: React.FC<tempInterface> = ({ name, area }) => {
     )
 }
 
-const RatingsComp: React.FC<tempInterface> = ({ rating }) => {
+const RatingsComp: React.FC<UtilityCompInterface> = ({ rating }) => {
     return (
         <div className='h-full w-full flex justify-start items-center mt-4'>
             {
@@ -69,7 +50,7 @@ const RatingsComp: React.FC<tempInterface> = ({ rating }) => {
     )
 }
 
-const SpecDetailComp: React.FC<tempInterface> = ({ cost, ammenities }) => {
+const SpecDetailComp: React.FC<UtilityCompInterface> = ({ cost, ammenities }) => {
     const len = ammenities?.length;
 
     return (

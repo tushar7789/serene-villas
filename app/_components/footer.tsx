@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { FooterLogoList } from '../_utils/utils'
+import { FooterLogoList } from '../_utils/imageDirectory'
 import Image from 'next/image'
 import Button from './button'
 

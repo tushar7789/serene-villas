@@ -5,7 +5,7 @@ import { Carousel } from "antd";
 import { CarouselRef } from 'antd/es/carousel';
 import Image from 'next/image';
 
-import { ImageList } from '../_utils/utils';
+import { ImageList } from '../_utils/imageDirectory';
 import LeftArrow from '../../public/static_images/left-arrow.png'
 import RightArrow from "../../public/static_images/right-arrow.png"
 import Cross from "../../public/static_images/cross.png"

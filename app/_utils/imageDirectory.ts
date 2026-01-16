@@ -22,8 +22,6 @@ import CampusEntryImage from "../../public/static_images/campus-entry.png"
 import CampusAmenitiesImage from "../../public/static_images/campus-amenities.png"
 import CampusDiningImage from "../../public/static_images/campus-dining.png"
 
-import FilterArrow from "../../public/static_images/filter-arrow.png"
-
 const ImageList = [
     [LivingRoomImg, "Living Room"],
     [BedroomImg, "Bedroom"],

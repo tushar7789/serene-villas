@@ -1,25 +1,24 @@
 import React from 'react'
+import { DatePicker } from 'antd';
 
 import Arrow from '../_components/arrows';
+import getTodaysDate from '../_utils/timeAndDate';
 
-const TestComp = () => {
+interface A {
+    text?: string,
+    extraStyle?: string,
+    category?: string
+}
+
+const FilterPanel = () => {
     return (
         <div className='h-17 w-240 flex justify-center items-center'>
             <div className='h-full w-120 flex justify-start items-center'>
-                <div className='h-full w-50 mr-10 flex-col justify-end text-green-600'>
-                    <span className='block h-5 w-full text-sm mb-2'><i>From</i></span>
-                    <input type="text" className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' placeholder='' />
-                </div>
-                <div className='h-full w-50 flex-col justify-end'>
-                    <span className='block h-5 w-full text-sm mb-2 text-green-600'><i>To</i></span>
-                    <input type="text" className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' placeholder='' />
-                </div>
+                <BitChunkTwo extraStyle='mr-10' category='1' text="from" />
+                <BitChunkTwo category='1' text="to" />
             </div>
             <div className='h-full w-60 flex justify-center items-center'>
-                <div className='h-full w-50 flex-col justify-end'>
-                    <span className='block h-5 w-full text-sm mb-2 text-green-600'><i>No. of visitors</i></span>
-                    <input type="number" className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm  focus:outline-2 outline-green-600 text-black' />
-                </div>
+                <BitChunkTwo category='2' text="No. of visitors" />
             </div>
             <div className='h-full w-60'>
                 <span className='block h-5 w-full text-sm mb-2 text-green-600'><i>Filter</i></span>
@@ -45,4 +44,32 @@ const TestComp = () => {
     )
 }
 
-export default TestComp;
+const HeadText: React.FC<A> = ({ text }) => {
+    return (
+        <span className='block h-5 w-full text-sm mb-2 text-green-600'><i>{text}</i></span>
+    )
+}
+
+const BitChunk: React.FC<A> = ({ text, category }) => {
+    return (
+        <>
+            <HeadText text={text} />
+            {
+                category === "2" ?
+                    <input id={text} type="number" className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm  focus:outline-2 outline-green-600 text-black' />
+                    :
+                    <DatePicker id={text} className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} />
+            }
+        </>
+    )
+}
+
+const BitChunkTwo: React.FC<A> = ({ extraStyle, category, text }) => {
+    return (
+        <div className={`h-full w-50 ${extraStyle} flex-col justify-end`} >
+            <BitChunk category={category} text={text} />
+        </div >
+    )
+}
+
+export default FilterPanel;

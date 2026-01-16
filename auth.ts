@@ -1,7 +1,6 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import { authConfig } from "./lib/auth.config";
 // import {PrismaAdapter} from "@auth/prisma-adapter";
-import func from "./app/_utils/test"
 
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -24,7 +23,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.id = user.id;
     }
     if(user?.email){
-        func(user);
+        // func(user);
     }
     return token;
   },
