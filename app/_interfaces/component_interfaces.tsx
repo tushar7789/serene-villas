@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export interface ButtonPropInterface {
     children: React.ReactNode;
-    to: Url,
+    to?: Url,
     type: string,
     callbackSetter?: Dispatch<SetStateAction<boolean>>;
 }

@@ -1,8 +1,8 @@
 import {create} from "zustand";
 
 type State = {
-    from: string,
-    to: string,
+    from: string | string[],
+    to: string | string[],
     noOfVisitors: string,
     filterValue: string,
     filterDirection: string,
@@ -16,7 +16,7 @@ type Action = {
     setFilterDirection: (filterDirection: State['filterDirection']) => void,
 }
 
-const filterDataStore = create<State & Action>((set, get) => ({
+const useFilterDataStore = create<State & Action>((set, get) => ({
     from:"",
     to:"",
     noOfVisitors:"",
@@ -30,4 +30,4 @@ const filterDataStore = create<State & Action>((set, get) => ({
 
 }));
 
-export default filterDataStore;
+export default useFilterDataStore;

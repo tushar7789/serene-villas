@@ -17,7 +17,7 @@ function Button({ children, to, type, callbackSetter }: ButtonPropInterface) {
 
     return (
         <Link
-            href={to}
+            href={to === undefined ? "/" : to}
             className={`
                 flex flex-row 
                 items-center

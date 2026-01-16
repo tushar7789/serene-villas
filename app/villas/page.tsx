@@ -13,7 +13,7 @@ const Villas = () => {
 
     return (
         <>
-            <div className="h-35 w-screen px-40 pb-10 flex items-end justify-start bg-linear-to-r from-gray-50 to-gray-100 sticky top-0 z-20">
+            <div className="h-45 w-screen px-40 flex items-center justify-start bg-linear-to-r from-gray-50 to-gray-100 sticky top-0 z-20">
                 <FilterPanel />
             </div>
             <div className="h-100 w-screen flex flex-col justify-start items-center">
