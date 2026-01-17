@@ -1,11 +1,10 @@
-datasource db {
-  provider = "mongodb"
-  url = env("DIRECT_DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
-  // output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DIRECT_DATABASE_URL")
 }
 
 model User {
@@ -17,7 +16,7 @@ model User {
   accounts      Account[]
   // sessions      Session[]
  
-  @@map("users")
+  @@map("Users")
 }
 
 model Account {
@@ -37,5 +36,14 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@unique([provider, providerAccountId])
-  @@map("accounts")
+  @@map("Accounts")
+}
+
+model Villas {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  area        String
+  cost        Int
+  name        String
+  rating      Int
+  villaNumber Int
 }

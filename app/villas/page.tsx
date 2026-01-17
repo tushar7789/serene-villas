@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Divider from '@mui/material/Divider';
 
@@ -10,6 +11,20 @@ import FilterPanel from "../_components/filterPanel";
 import { villaList } from "../_utils/dummyData";
 
 const Villas = () => {
+
+    const [vList, setVList] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3000/api/villas").then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`)
+            }
+            return res.json();
+        }).then(data => {
+            // setVList(data);
+            console.log("v list:", data);
+        })
+    }, []);
 
     return (
         <>
