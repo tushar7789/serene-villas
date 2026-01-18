@@ -8,11 +8,13 @@ import Cabin_1 from "../../public/static_images/living-room-i.png";
 import Button from "../_components/button";
 import VillaSpecsComp from "../_components/villaSpecsComp";
 import FilterPanel from "../_components/filterPanel";
-import { villaList } from "../_utils/dummyData";
+import useAllVillaDataStore from "../store/villaDataStore";
 
 const Villas = () => {
 
-    const [vList, setVList] = useState([]);
+    const setAllVillas = useAllVillaDataStore((state) => state.setAllVillas);
+    const allVillas = useAllVillaDataStore((state) => state.allVillas);
+    const filteredVillas = useAllVillaDataStore((state) => state.filteredVillas);
 
     useEffect(() => {
         fetch("http://localhost:3000/api/villas").then(res => {
@@ -21,8 +23,8 @@ const Villas = () => {
             }
             return res.json();
         }).then(data => {
-            // setVList(data);
-            console.log("v list:", data);
+            setAllVillas(data["allVillas"]);
+            console.log("v list:", data["allVillas"]);
         })
     }, []);
 
@@ -33,20 +35,36 @@ const Villas = () => {
             </div>
             <div className="h-100 w-screen flex flex-col justify-start items-center">
                 {
-                    villaList.map((villaDetails, ind) => {
-                        const id = villaDetails.name.split(" ")[1];
-                        return (
-                            <div className='w-screen px-40 mt-10' key={ind}>
-                                <Button to={`villas/${id}`} type={"image-button"}>
-                                    <Image src={Cabin_1} alt="cabin" height={320} width={350} style={{ borderRadius: '8px' }} />
-                                    <div className="h-full w-140 rounded-r-xl ">
-                                        <VillaSpecsComp villaDetails={villaDetails} />
-                                        <Divider variant="middle" flexItem />
-                                    </div>
-                                </Button>
-                            </div >
-                        )
-                    })
+                    allVillas.length === 0 ? <span>Loading...</span> :
+                        filteredVillas.length !== 0 ?
+                            filteredVillas.map((villaDetails: any, ind) => {
+                                const id = villaDetails.villaNumber;
+                                return (
+                                    <div className='w-screen px-40 mt-10' key={ind}>
+                                        <Button to={`villas/${id}`} type={"image-button"}>
+                                            <Image src={Cabin_1} alt="cabin" height={320} width={350} style={{ borderRadius: '8px' }} />
+                                            <div className="h-full w-140 rounded-r-xl ">
+                                                <VillaSpecsComp villaDetails={villaDetails} />
+                                                <Divider variant="middle" flexItem />
+                                            </div>
+                                        </Button>
+                                    </div >
+                                )
+                            }) :
+                            allVillas.map((villaDetails: any, ind) => {
+                                const id = villaDetails.villaNumber;
+                                return (
+                                    <div className='w-screen px-40 mt-10' key={ind}>
+                                        <Button to={`villas/${id}`} type={"image-button"}>
+                                            <Image src={Cabin_1} alt="cabin" height={320} width={350} style={{ borderRadius: '8px' }} />
+                                            <div className="h-full w-140 rounded-r-xl ">
+                                                <VillaSpecsComp villaDetails={villaDetails} />
+                                                <Divider variant="middle" flexItem />
+                                            </div>
+                                        </Button>
+                                    </div >
+                                )
+                            })
                 }
             </div >
         </>

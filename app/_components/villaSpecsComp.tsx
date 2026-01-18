@@ -21,7 +21,7 @@ const VillaSpecsComp: React.FC<VillaSpecsCompInterface> = ({ villaDetails }) => 
             <div>
                 <TitleComp name={villaDetails.name} area={villaDetails.area} />
                 <RatingsComp rating={villaDetails.rating} />
-                <SpecDetailComp cost={villaDetails.cost} ammenities={villaDetails.ammenities} />
+                <SpecDetailComp cost={villaDetails.cost} />
             </div>
         </div>
     )

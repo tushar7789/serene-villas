@@ -5,6 +5,8 @@ import Arrow from '../_components/arrows';
 import getTodaysDate from '../_utils/timeAndDate';
 import useFilterDataStore from '../store/filterDataStore';
 import Button from './button';
+import useVillaDataStore from '../store/villaDataStore';
+import { filterFunction } from "../_utils/filterFunction";
 
 const FilterPanel = () => {
     const noOfVisitors = useFilterDataStore((state) => state.noOfVisitors);
@@ -13,6 +15,9 @@ const FilterPanel = () => {
     const setNoOfVisitors = useFilterDataStore((state) => state.setNoOfVisitors);
     const setFilterValue = useFilterDataStore((state) => state.setFilterValue);
     const setFilterDirection = useFilterDataStore((state) => state.setFilterDirection);
+
+    const allVillas = useVillaDataStore((state) => state.allVillas);
+    const setFilteredVillas = useVillaDataStore((state) => state.setFilteredVillas)
 
     const onFromDateChange: DatePickerProps['onChange'] = (date, dateString) => {
         if (dateString !== null) {
@@ -41,7 +46,7 @@ const FilterPanel = () => {
     }
 
     const handleApplyFilters = () => {
-        // console.log(noOfVisitors, "--", filterValue, "--", filterDirection, "--", fromDate, "--", toDate);
+        setFilteredVillas(filterFunction({ allVillas, noOfVisitors: Number(noOfVisitors) }));
     }
 
     const handleClearFilters = () => {
@@ -89,7 +94,7 @@ const FilterPanel = () => {
                 </div>
             </div>
             <div className='h-10 w-full flex justify-start items-center '>
-                <Button type="secondary">Apply Filter</Button>
+                <Button type="secondary" callbackSetter={handleApplyFilters}>Apply Filter</Button>
                 <Button type="secondary">Clear</Button>
             </div>
         </div>
