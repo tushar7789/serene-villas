@@ -1,23 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DatePicker, DatePickerProps } from 'antd';
 
 import Arrow from '../_components/arrows';
 import getTodaysDate from '../_utils/timeAndDate';
-import useFilterDataStore from '../store/filterDataStore';
 import Button from './button';
 import useVillaDataStore from '../store/villaDataStore';
 import { filterFunction } from "../_utils/filterFunction";
 
 const FilterPanel = () => {
-    const noOfVisitors = useFilterDataStore((state) => state.noOfVisitors);
-    const setFrom = useFilterDataStore((state) => state.setFrom);
-    const setTo = useFilterDataStore((state) => state.setTo);
-    const setNoOfVisitors = useFilterDataStore((state) => state.setNoOfVisitors);
-    const setFilterValue = useFilterDataStore((state) => state.setFilterValue);
-    const setFilterDirection = useFilterDataStore((state) => state.setFilterDirection);
 
     const allVillas = useVillaDataStore((state) => state.allVillas);
-    const setFilteredVillas = useVillaDataStore((state) => state.setFilteredVillas)
+    const setFilteredVillas = useVillaDataStore((state) => state.setFilteredVillas);
+
+    const [from, setFrom] = useState<string | string[]>("");
+    const [to, setTo] = useState<string | string[]>("");
+    const [noOfVisitors, setNoOfVisitors] = useState<string>("");
+    const [filterValue, setFilterValue] = useState<string>("");
+    const [filterDirection, setFilterDirection] = useState<string>("");
 
     const onFromDateChange: DatePickerProps['onChange'] = (date, dateString) => {
         if (dateString !== null) {
@@ -46,11 +45,12 @@ const FilterPanel = () => {
     }
 
     const handleApplyFilters = () => {
-        setFilteredVillas(filterFunction({ allVillas, noOfVisitors: Number(noOfVisitors) }));
+        const tempFiltered = filterFunction({ allVillas, noOfVisitors: Number(noOfVisitors) })
+        setFilteredVillas({ filterAttempted: true, Villas: tempFiltered });
     }
 
     const handleClearFilters = () => {
-
+        setFilteredVillas({ filterAttempted: false, Villas: [] });
     }
 
     return (
@@ -95,7 +95,7 @@ const FilterPanel = () => {
             </div>
             <div className='h-10 w-full flex justify-start items-center '>
                 <Button type="secondary" callbackSetter={handleApplyFilters}>Apply Filter</Button>
-                <Button type="secondary">Clear</Button>
+                <Button type="secondary" callbackSetter={handleClearFilters}>Clear</Button>
             </div>
         </div>
     )

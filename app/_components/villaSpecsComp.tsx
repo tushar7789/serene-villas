@@ -2,26 +2,21 @@ import Image from 'next/image'
 import React from 'react'
 
 import Star from "../../public/static_images/star.png"
+import { VillaType } from '../store/villaDataStore'
 
-interface UtilityCompInterface {
-    name?: string,
-    area?: string,
-    rating?: string,
-    cost?: string,
+
+// use this after adding array of ammenities to the database
+type UtilityCompInterface = VillaType & {
     ammenities?: Array<Array<string>>,
 }
 
-interface VillaSpecsCompInterface {
-    villaDetails: UtilityCompInterface
-}
-
-const VillaSpecsComp: React.FC<VillaSpecsCompInterface> = ({ villaDetails }) => {
+const VillaSpecsComp: React.FC<VillaType> = ({ name, area, cost, rating, }) => {
     return (
         <div className={`h-full w-full text-[14px] pt-4`}>
             <div>
-                <TitleComp name={villaDetails.name} area={villaDetails.area} />
-                <RatingsComp rating={villaDetails.rating} />
-                <SpecDetailComp cost={villaDetails.cost} />
+                {/* <TitleComp name={name} area={area} />
+                <RatingsComp rating={rating} />
+                <SpecDetailComp cost={cost} /> */}
             </div>
         </div>
     )

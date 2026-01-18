@@ -1,7 +1,7 @@
-import { TempType } from "../store/villaDataStore"
+import { VillaType } from "../store/villaDataStore"
 
 interface TempInt {
-    allVillas : TempType[],
+    allVillas : VillaType[],
     noOfVisitors: number
 }
 

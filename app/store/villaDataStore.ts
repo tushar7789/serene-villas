@@ -1,6 +1,6 @@
 import {create} from "zustand";
 
-export type TempType = {
+export type VillaType = {
     id: string,
     area: string,
     cost: number,
@@ -9,9 +9,14 @@ export type TempType = {
     villaNumber: number
 }
 
+type TempTypeTwo = {
+    Villas: Array<VillaType>,
+    filterAttempted: boolean
+}
+
 type State = {
-    allVillas: Array<TempType>,
-    filteredVillas: Array<TempType> 
+    allVillas: Array<VillaType>,
+    filteredVillas: TempTypeTwo
 }
 
 type Action = {
@@ -21,7 +26,7 @@ type Action = {
 
 const useVillaDataStore = create<State & Action>((set, get) => ({
     allVillas: [],
-    filteredVillas: [],
+    filteredVillas: { Villas:[], filterAttempted: false},
     setAllVillas: (allVillas) => set({allVillas : allVillas}),
     setFilteredVillas: (filteredVillas) => set({filteredVillas : filteredVillas})
 }));
