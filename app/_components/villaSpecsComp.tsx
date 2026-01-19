@@ -4,19 +4,33 @@ import React from 'react'
 import Star from "../../public/static_images/star.png"
 import { VillaType } from '../store/villaDataStore'
 
-
-// use this after adding array of ammenities to the database
-type UtilityCompInterface = VillaType & {
+type UtilityCompInterface = {
+    name?: string,
+    area?: string,
+    cost?: string,
+    rating?: string,
     ammenities?: Array<Array<string>>,
 }
 
-const VillaSpecsComp: React.FC<VillaType> = ({ name, area, cost, rating, }) => {
+interface VillaInterface {
+    villaDetails: VillaType;
+}
+
+const ammenitiesVAR = [
+    ["Kitchen", "1"],
+    ["Bathroom", "2"],
+    ["Bedroom", "3"],
+    ["LivingRoom", "2"],
+    ["Balcony", "4"]
+]
+
+const VillaSpecsComp: React.FC<VillaInterface> = ({ villaDetails }) => {
     return (
         <div className={`h-full w-full text-[14px] pt-4`}>
             <div>
-                {/* <TitleComp name={name} area={area} />
-                <RatingsComp rating={rating} />
-                <SpecDetailComp cost={cost} /> */}
+                <TitleComp name={villaDetails.name} area={villaDetails.area} />
+                <RatingsComp rating={villaDetails.rating.toLocaleString()} />
+                <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={ammenitiesVAR} />
             </div>
         </div>
     )
@@ -49,27 +63,33 @@ const SpecDetailComp: React.FC<UtilityCompInterface> = ({ cost, ammenities }) =>
     const len = ammenities?.length;
 
     return (
-        <div className='h-25 w-full flex py-3'>
-            <div className='h-full w-115 flex flex-col '>
+        <div className='h-25 w-full flex py-3 text-gray-600'>
+            <div className='h-full w-115 flex flex-col justify-center'>
                 {
                     len !== undefined && len !== 0 ?
                         <>
-                            <div className='h-8 w-full flex justify-evenly bg-yellow-500'>
+                            <div className='h-8 w-full flex justify-start'>
                                 {
                                     ammenities?.slice(0, 3).map((ele, ind) => {
                                         return (
-                                            <span className='h-full w-5 flex justify-start items-center' key={ind}>{ele?.at(ind)}</span>
+                                            <div className='h-full w-35 flex mr-2' key={ind}>
+                                                <span className='h-full w-7 flex justify-start items-center'><i>{ele?.at(1)} x</i></span>
+                                                <span className='h-full w-28 flex justify-start items-center'><i>{ele?.at(0)}</i></span>
+                                            </div>
                                         );
                                     })
                                 }
                             </div>
                             {(len > 3)
                                 &&
-                                <div className='h-12 w-full flex justify-evenly bg-yellow-500'>
+                                <div className='h-8 w-full flex justify-start '>
                                     {
                                         ammenities?.slice(3).map((ele, ind) => {
                                             return (
-                                                <span className='h-full w-full flex justify-start items-center' key={ind}>{ele?.at(ind)}</span>
+                                                <div className='h-full w-35 flex mr-2' key={ind}>
+                                                    <span className='h-full w-7 flex justify-start items-center'><i>{ele?.at(1)} x</i></span>
+                                                    <span className='h-full w-28 flex justify-start items-center'><i>{ele?.at(0)}</i></span>
+                                                </div>
                                             );
                                         })
                                     }
