@@ -16,21 +16,13 @@ interface VillaInterface {
     villaDetails: VillaType;
 }
 
-const ammenitiesVAR = [
-    ["Kitchen", "1"],
-    ["Bathroom", "2"],
-    ["Bedroom", "3"],
-    ["LivingRoom", "2"],
-    ["Balcony", "4"]
-]
-
 const VillaSpecsComp: React.FC<VillaInterface> = ({ villaDetails }) => {
     return (
         <div className={`h-full w-full text-[14px] pt-4`}>
             <div>
                 <TitleComp name={villaDetails.name} area={villaDetails.area} />
                 <RatingsComp rating={villaDetails.rating.toLocaleString()} />
-                <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={ammenitiesVAR} />
+                <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={villaDetails.ammenities.ammenities} />
             </div>
         </div>
     )

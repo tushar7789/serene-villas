@@ -1,34 +1,17 @@
 import React, { useState } from 'react'
-import { DatePicker, DatePickerProps } from 'antd';
+import { DatePicker } from 'antd';
 
 import Arrow from '../_components/arrows';
-import getTodaysDate from '../_utils/timeAndDate';
+import getTodaysDate from '../_utils/functions/timeAndDate';
 import Button from './button';
-import useVillaDataStore from '../store/villaDataStore';
-import { filterFunction } from "../_utils/filterFunction";
+import { filteredVillaFunction, clearFilterValues } from "../_utils/functions/filterPanelFunctions";
 
 const FilterPanel = () => {
-
-    const allVillas = useVillaDataStore((state) => state.allVillas);
-    const setFilteredVillas = useVillaDataStore((state) => state.setFilteredVillas);
-
-    const [from, setFrom] = useState<string | string[]>("");
-    const [to, setTo] = useState<string | string[]>("");
+    const [from, setFrom] = useState<string | null>("");
+    const [to, setTo] = useState<string | null>("");
     const [noOfVisitors, setNoOfVisitors] = useState<string>("");
     const [filterValue, setFilterValue] = useState<string>("");
     const [filterDirection, setFilterDirection] = useState<string>("");
-
-    const onFromDateChange: DatePickerProps['onChange'] = (date, dateString) => {
-        if (dateString !== null) {
-            setFrom(dateString);
-        }
-    }
-
-    const onToDateChange: DatePickerProps['onChange'] = (date, dateString) => {
-        if (dateString !== null) {
-            setTo(dateString);
-        }
-    }
 
     const handleNoOfVisitorsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (Number(e.currentTarget.value) >= 0 && Number(e.currentTarget.value) <= 8) {
@@ -36,21 +19,9 @@ const FilterPanel = () => {
         }
     }
 
-    const handleFilterValueChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setFilterValue(e.currentTarget.value);
-    }
-
-    const handleFilterDirection = (dir: string) => {
-        setFilterDirection(dir);
-    }
-
     const handleApplyFilters = () => {
-        const tempFiltered = filterFunction({ allVillas, noOfVisitors: Number(noOfVisitors) })
-        setFilteredVillas({ filterAttempted: true, Villas: tempFiltered });
-    }
-
-    const handleClearFilters = () => {
-        setFilteredVillas({ filterAttempted: false, Villas: [] });
+        console.log(from, " ", to, " ", noOfVisitors, " ", filterValue, " ", filterDirection);
+        filteredVillaFunction(Number(noOfVisitors));
     }
 
     return (
@@ -59,11 +30,11 @@ const FilterPanel = () => {
                 <div className='h-full w-120 flex justify-start items-center'>
                     <div className={`h-full w-50 mr-10 flex-col justify-end`} >
                         <span className='block h-5 w-full text-sm mb-2 text-green-600'><i>From</i></span>
-                        <DatePicker className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} onChange={onFromDateChange} />
+                        <DatePicker className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} onChange={(date, dateString) => setFrom(dateString)} />
                     </div >
                     <div className={`h-full w-50 flex-col justify-end`} >
                         <span className='block h-5 w-full text-sm mb-2 text-green-600'><i>To</i></span>
-                        <DatePicker className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} onChange={onToDateChange} />
+                        <DatePicker className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} onChange={(date, dateString) => setTo(dateString)} />
                     </div >
                 </div>
                 <div className='h-full w-60 flex justify-center items-center'>
@@ -75,7 +46,7 @@ const FilterPanel = () => {
                 <div className='h-full w-60'>
                     <span className='block h-5 w-full text-sm mb-2 text-green-600'><i>Filter By</i></span>
                     <div className='h-8 w-full flex itmes-center'>
-                        <select name="filter" id="filter" className='h-full w-40 mr-4 bg-gray-50 shadow-xl' onChange={handleFilterValueChange}>
+                        <select name="filter" id="filter" className='h-full w-40 mr-4 bg-gray-50 shadow-xl' onChange={(e) => setFilterValue(e.currentTarget.value)}>
                             <option value="Price">Price</option>
                             <option value="LivingRoom">Living Rooms</option>
                             <option value="Bathrooms">Bath Rooms</option>
@@ -83,10 +54,10 @@ const FilterPanel = () => {
                             <option value="Kitchen">Kitchen</option>
                         </select>
                         <div className='h-full w-15 flex justify-between'>
-                            <span className='h-full w-7 flex justify-center items-center' onClick={() => handleFilterDirection("inc")}>
+                            <span className='h-full w-7 flex justify-center items-center' onClick={() => setFilterDirection("unc")}>
                                 <Arrow mode='up' />
                             </span>
-                            <span className='h-full w-7 flex justify-center items-center' onClick={() => handleFilterDirection("dec")}>
+                            <span className='h-full w-7 flex justify-center items-center' onClick={() => setFilterDirection("dec")}>
                                 <Arrow mode='down' />
                             </span>
                         </div>
@@ -95,9 +66,9 @@ const FilterPanel = () => {
             </div>
             <div className='h-10 w-full flex justify-start items-center '>
                 <Button type="secondary" callbackSetter={handleApplyFilters}>Apply Filter</Button>
-                <Button type="secondary" callbackSetter={handleClearFilters}>Clear</Button>
+                <Button type="secondary" callbackSetter={clearFilterValues}>Clear</Button>
             </div>
-        </div>
+        </div >
     )
 }
 
