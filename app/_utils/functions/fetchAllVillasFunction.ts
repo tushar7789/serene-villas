@@ -1,4 +1,4 @@
-import useVillaDataStore from "../../store/villaDataStore";
+import useVillaDataStore from "../../_store/villaDataStore";
 
 export const fetchAllVillasFunction = async () => {
     const setAllVillas = useVillaDataStore.getState().setAllVillas;

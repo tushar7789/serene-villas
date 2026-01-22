@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 import Star from "../../public/static_images/star.png"
-import { VillaType } from '../store/villaDataStore'
+import { VillaType } from '../_store/villaDataStore'
 
 type UtilityCompInterface = {
     name?: string,
@@ -18,36 +18,29 @@ interface VillaInterface {
 
 const VillaSpecsComp: React.FC<VillaInterface> = ({ villaDetails }) => {
     return (
-        <div className={`h-full w-full text-[14px] pt-4`}>
-            <div>
-                <TitleComp name={villaDetails.name} area={villaDetails.area} />
-                <RatingsComp rating={villaDetails.rating.toLocaleString()} />
-                <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={villaDetails.ammenities.ammenities} />
+        <div className='h-full w-full text-[14px] pt-4'>
+            <TitleComp name={villaDetails.name} area={villaDetails.area} rating={villaDetails.rating.toLocaleString()} />
+            <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={villaDetails.ammenities.ammenities} />
+
+        </div>
+    )
+}
+
+
+const TitleComp: React.FC<UtilityCompInterface> = ({ name, area, rating }) => {
+    return (
+        <>
+            <div className='h-10 w-full flex justify-between items-center text-green-700 text-2xl font-bold'>
+                <span className="h-full w-min-10 flex items-center">{name}</span>
+                <span className='h-full w-30 flex justify-end items-center text-[16px]'>
+                    <span className='h-8 w-7 flex justify-center items-center'><i>{rating}</i></span>
+                    <span className='h-8 w-7 flex justify-center items-center'>
+                        <Image src={Star.src} height={28} width={28} alt="" />
+                    </span>
+                </span>
             </div>
-        </div>
-    )
-}
-
-const TitleComp: React.FC<UtilityCompInterface> = ({ name, area }) => {
-    return (
-        <div className="h-10 w-full">
-            <div className='h-8 w-full mr-5 text-green-700 text-2xl font-bold'>{name}</div>
-            <div className='h-5 w-full text-gray-600 text-xs font-bold '><i>{area}</i></div>
-        </div>
-    )
-}
-
-const RatingsComp: React.FC<UtilityCompInterface> = ({ rating }) => {
-    return (
-        <div className='h-full w-full flex justify-start items-center mt-4'>
-            {
-                Array.from({ length: Number(rating) }, (ele, ind) => {
-                    return (
-                        <Image src={Star.src} height={20} width={20} alt="" key={ind} />
-                    )
-                })
-            }
-        </div>
+            <div className='h-3 w-full mb-3 text-gray-600 text-xs font-bold'><i>{area}</i></div>
+        </>
     )
 }
 
@@ -55,7 +48,7 @@ const SpecDetailComp: React.FC<UtilityCompInterface> = ({ cost, ammenities }) =>
     const len = ammenities?.length;
 
     return (
-        <div className='h-25 w-full flex py-3 text-gray-600'>
+        <div className='h-25 w-full flex py-3 text-gray-600 bg-purple-400'>
             <div className='h-full w-115 flex flex-col justify-center'>
                 {
                     len !== undefined && len !== 0 ?

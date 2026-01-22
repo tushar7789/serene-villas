@@ -5,7 +5,8 @@ export interface ButtonPropInterface {
     children: React.ReactNode;
     to?: Url,
     type: string,
-    callbackSetter?: Dispatch<SetStateAction<boolean>>;
+    callbackSetter?: Dispatch<SetStateAction<boolean>>,
+    key?: React.Key
 }
 
 export interface OverlayPropsInterface {

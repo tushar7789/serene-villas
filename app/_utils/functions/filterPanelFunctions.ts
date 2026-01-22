@@ -1,4 +1,4 @@
-import useVillaDataStore from "../../store/villaDataStore"
+import useVillaDataStore from "../../_store/villaDataStore"
 
 export const filteredVillaFunction = (noOfVisitors : number) => {
     const allVillas = useVillaDataStore.getState().allVillas;
