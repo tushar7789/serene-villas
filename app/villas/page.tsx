@@ -24,9 +24,8 @@ const Villas = () => {
     return (
         <>
             <div className="h-200 w-screen flex justify-center items-center">
-                <div className="h-full w-150 flex flex-col justify-start items-center bg-amber-400">
-                    LMAO
-                </div>
+                <FilterPanel />
+                <Divider orientation="vertical" flexItem />
                 <div className="h-full w-550 flex flex-col justify-start items-center">
                     <div className="h-20 w-full px-10 my-5 flex justify-center items-center ">
                         <input type="text" className="h-14 w-full px-5 flex justify-center items-center outline-0 bg-linear-90 shadow-xl rounded-md" placeholder="Search property by name or area ...." />

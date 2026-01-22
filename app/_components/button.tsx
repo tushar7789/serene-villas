@@ -24,13 +24,13 @@ function Button({ children, to, type, callbackSetter }: ButtonPropInterface) {
                 ${type === "primary"
                     ? 'w-[var(--primary-button-width)] h-[var(--primary-button-height)] justify-start ml-[10px] text-[22px] italic'
                     : type === "secondary"
-                        ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)]  hover:bg-green-400 justify-center'
+                        ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)]  hover:bg-emerald-500 justify-center'
                         : type === 'search'
-                            ? 'w-[170px] h-[40px] cursor-pointer justify-center bg-green-400 rounded-sm'
+                            ? 'w-[170px] h-[40px] cursor-pointer justify-center bg-emerald-500 rounded-sm'
                             : type === 'booking'
                                 ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] text-[20px] backdrop-opacity-90 hover:bg-[white] hover:text-[black] justify-center'
                                 : type === 'selected'
-                                    ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] bg-green-400 justify-center'
+                                    ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] bg-emerald-500 justify-center'
                                     : 'h-50 w-full flex justify-between items-center hover:shadow-xl'
                 }
             `}
