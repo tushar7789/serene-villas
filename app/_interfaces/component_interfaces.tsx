@@ -6,7 +6,9 @@ export interface ButtonPropInterface {
     to?: Url,
     type: string,
     callbackSetter?: Dispatch<SetStateAction<boolean>>,
-    key?: React.Key
+    key?: React.Key,
+    height?: string,
+    weight?: string
 }
 
 export interface OverlayPropsInterface {
