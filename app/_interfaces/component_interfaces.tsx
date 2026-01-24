@@ -1,14 +1,18 @@
-import { Url } from "next/dist/shared/lib/router/router";
+// import { Url } from "next/dist/shared/lib/router/router";
 import { Dispatch, SetStateAction } from "react";
+// import { VillaInterface } from "../_components/villaSpecsComp";
+import { VillaType } from "../_store/villaDataStore";
+
 
 export interface ButtonPropInterface {
     children: React.ReactNode;
-    to?: Url,
+    to?: string,
     type: string,
     callbackSetter?: Dispatch<SetStateAction<boolean>>,
     key?: React.Key,
     height?: string,
-    weight?: string
+    width?: string,
+    villaDetails?: VillaType
 }
 
 export interface OverlayPropsInterface {

@@ -4,9 +4,9 @@ import React, { MouseEvent } from 'react'
 import Link from 'next/link'
 import { ButtonPropInterface } from '../_interfaces/component_interfaces'
 
-function Button({ children, to, height, weight, type, callbackSetter }: ButtonPropInterface) {
+function Button({ children, to, height, width, type, callbackSetter, villaDetails }: ButtonPropInterface) {
     const hg = `${height !== undefined ? `h-${height}` : "h-15"}`
-    const wt = `${weight !== undefined ? `h-${weight}` : "w-full"}`
+    const wt = `${width !== undefined ? `w-${width}` : "w-full"}`
 
     function handleClick(e: MouseEvent) {
         if (type === 'booking' || type === 'secondary') {
@@ -19,7 +19,10 @@ function Button({ children, to, height, weight, type, callbackSetter }: ButtonPr
 
     return (
         <Link
-            href={to === undefined ? "/" : to}
+            href={{
+                pathname: to === undefined ? "/" : to,
+                query: { villaDetails: JSON.stringify(villaDetails) }
+            }}
             className={`
                 flex 
                 flex-row 

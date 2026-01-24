@@ -12,7 +12,7 @@ type UtilityCompInterface = {
     ammenities?: Array<Array<string>>,
 }
 
-interface VillaInterface {
+export interface VillaInterface {
     villaDetails: VillaType;
 }
 
@@ -21,7 +21,6 @@ const VillaSpecsComp: React.FC<VillaInterface> = ({ villaDetails }) => {
         <div className='h-full w-full text-[14px] pt-4'>
             <TitleComp name={villaDetails.name} area={villaDetails.area} rating={villaDetails.rating.toLocaleString()} />
             <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={villaDetails.ammenities.ammenities} />
-
         </div>
     )
 }
@@ -48,8 +47,8 @@ const SpecDetailComp: React.FC<UtilityCompInterface> = ({ cost, ammenities }) =>
     const len = ammenities?.length;
 
     return (
-        <div className='h-25 w-full flex py-3 text-gray-600 bg-purple-400'>
-            <div className='h-full w-115 flex flex-col justify-center'>
+        <div className='h-25 w-full flex py-3 text-gray-600'>
+            <div className='h-full w-115 flex flex-col justify-start '>
                 {
                     len !== undefined && len !== 0 ?
                         <>

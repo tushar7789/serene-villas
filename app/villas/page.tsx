@@ -39,7 +39,7 @@ const Villas = () => {
                                         const id = villaDetails.villaNumber;
                                         return (
                                             <div className='w-full px-10 mt-5' key={ind}>
-                                                <Button to={`villas/${id}`} type={"image-button"} key={ind}>
+                                                <Button to={`villas/${id}`} type={"image-button"} key={ind} villaDetails={villaDetails}>
                                                     <Image src={Cabin_1} alt="cabin" height={220} width={250} style={{ borderRadius: '8px' }} />
                                                     <div className="h-full w-100 rounded-r-xl ">
                                                         <VillaSpecsComp villaDetails={villaDetails} />
@@ -53,7 +53,7 @@ const Villas = () => {
                                             const id = villaDetails.villaNumber;
                                             return (
                                                 <div className='h-80 w-full px-10 mt-5' key={ind}>
-                                                    <Button to={`villas/${id}`} type={"image-button"} key={ind}>
+                                                    <Button to={`villas/${id}`} type={"image-button"} key={ind} villaDetails={villaDetails}>
                                                         <Image src={Cabin_1} alt="cabin" height={220} width={250} style={{ borderRadius: '8px' }} />
                                                         <div className="h-full w-140 rounded-r-xl ">
                                                             <VillaSpecsComp villaDetails={villaDetails} />

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useContext } from 'react'
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Divider from '@mui/material/Divider';
 
@@ -9,13 +9,16 @@ import Button from '../../_components/button';
 import Overlay from '../../_components/overlay'
 
 import CabinImg from "../../../public/static_images/balcony-i.png"
-import VillaSpecsComp from '../../_components/villaSpecsComp';
 import AlbumIcon from "../../../public/static_images/album-icon.png"
 import { RootContext } from '../../_components/rootProvider';
 
 function VillaId() {
     const pathname = usePathname();
     const id = pathname.split("/")[2];
+
+    const villaDetailsString = useSearchParams().get('villaDetails');
+    const villaDetails = villaDetailsString !== null ? JSON.parse(villaDetailsString) : null;
+
 
     const [overlayState, setOverlayState] = useState(false);
     const { callbackSetter } = useContext(RootContext);
@@ -33,13 +36,13 @@ function VillaId() {
                     <div className='h-full w-105 flex flex-col items-start justify-between'>
                         <Image src={CabinImg.src} height={350} width={420} alt="" style={{ borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
                         <div className='h-56.25 w-full flex flex-col justify-between items-center border-r-0 border-r-black'>
-                            <ul className='h-40 w-91.25 text-[14px] pt-10'>
-                                NOt Anymore
-                            </ul>
+                            <div className='h-40 w-full px-5 py-2 text-[14px] bg-amber-500'>
+                                NOt Anymore,,,{villaDetails !== null ? villaDetails.area : "womp womp"}
+                            </div>
                             <Divider variant="middle" flexItem />
-                            <p className='h-10 w-full px-5 flex justify-between text-[20px]'>
+                            <p className='h-10 w-full px-5 flex justify-between text-[20px] bg-blue-500'>
                                 <span>Total Price</span>
-                                <span>Rs. 43200</span>
+                                <span>Rs. {villaDetails.cost}</span>
                             </p>
                         </div>
                     </div>
