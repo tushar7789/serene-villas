@@ -7,6 +7,7 @@ import Divider from '@mui/material/Divider';
 
 import Button from '../../_components/button';
 import Overlay from '../../_components/overlay'
+import { AmmenitiesComp, TitleComp } from '../../_components/villaSpecsComp';
 
 import CabinImg from "../../../public/static_images/balcony-i.png"
 import AlbumIcon from "../../../public/static_images/album-icon.png"
@@ -36,12 +37,12 @@ function VillaId() {
                     <div className='h-full w-105 flex flex-col items-start justify-between'>
                         <Image src={CabinImg.src} height={350} width={420} alt="" style={{ borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
                         <div className='h-56.25 w-full flex flex-col justify-between items-center border-r-0 border-r-black'>
-                            <div className='h-40 w-full px-5 py-2 text-[14px] bg-amber-500'>
-
-                                {/* {villaDetails !== null ? villaDetails.area : "womp womp"} */}
+                            <div className='h-40 w-full px-5 py-2 text-[14px]'>
+                                <TitleComp name={villaDetails.name} area={villaDetails.area} rating={villaDetails.rating.toLocaleString()} titleType='2' />
+                                <AmmenitiesComp ammenities={villaDetails.ammenities.ammenities} ammenitiesType='2' />
                             </div>
                             <Divider variant="middle" flexItem />
-                            <p className='h-10 w-full px-5 flex justify-between text-[20px] bg-blue-500'>
+                            <p className='h-10 w-full px-5 flex justify-between text-[20px]'>
                                 <span>Total Price</span>
                                 <span>Rs. {villaDetails.cost}</span>
                             </p>

@@ -10,6 +10,8 @@ type UtilityCompInterface = {
     cost?: string,
     rating?: string,
     ammenities?: Array<Array<string>>,
+    ammenitiesType?: string,
+    titleType?: string
 }
 
 export interface VillaInterface {
@@ -19,24 +21,28 @@ export interface VillaInterface {
 const VillaSpecsComp: React.FC<VillaInterface> = ({ villaDetails }) => {
     return (
         <div className='h-full w-full text-[14px] pt-4'>
-            <TitleComp name={villaDetails.name} area={villaDetails.area} rating={villaDetails.rating.toLocaleString()} />
+            <TitleComp name={villaDetails.name} area={villaDetails.area} rating={villaDetails.rating.toLocaleString()} titleType='1' />
             <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={villaDetails.ammenities.ammenities} />
         </div>
     )
 }
 
 
-const TitleComp: React.FC<UtilityCompInterface> = ({ name, area, rating }) => {
+export const TitleComp: React.FC<UtilityCompInterface> = ({ name, area, rating, titleType }) => {
     return (
         <>
             <div className='h-10 w-full flex justify-between items-center text-green-700 text-2xl font-bold'>
                 <span className="h-full w-min-10 flex items-center">{name}</span>
-                <span className='h-full w-30 flex justify-end items-center text-[16px]'>
-                    <span className='h-8 w-7 flex justify-center items-center'><i>{rating}</i></span>
-                    <span className='h-8 w-7 flex justify-center items-center'>
-                        <Image src={Star.src} height={28} width={28} alt="" />
-                    </span>
-                </span>
+                {
+                    titleType === '1' ?
+                        <span className='h-full w-30 flex justify-end items-center text-[16px]'>
+                            <span className='h-8 w-7 flex justify-center items-center'><i>{rating}</i></span>
+                            <span className='h-8 w-7 flex justify-center items-center'>
+                                <Image src={Star.src} height={28} width={28} alt="" />
+                            </span>
+                        </span> :
+                        null
+                }
             </div>
             <div className='h-3 w-full mb-3 text-gray-600 text-xs font-bold'><i>{area}</i></div>
         </>
@@ -47,7 +53,7 @@ const SpecDetailComp: React.FC<UtilityCompInterface> = ({ cost, ammenities }) =>
     return (
         <div className='h-25 w-full flex py-3 text-gray-600'>
             <div className='h-full w-115 flex flex-col justify-start '>
-                <AmmenitiesComp ammenities={ammenities} />
+                <AmmenitiesComp ammenities={ammenities} ammenitiesType='1' />
             </div>
             <div className='h-full w-25 flex items-end font-extrabold text-[18px]'>
                 Rs. {cost}
@@ -56,8 +62,10 @@ const SpecDetailComp: React.FC<UtilityCompInterface> = ({ cost, ammenities }) =>
     )
 }
 
-export const AmmenitiesComp: React.FC<UtilityCompInterface> = ({ ammenities }) => {
+export const AmmenitiesComp: React.FC<UtilityCompInterface> = ({ ammenities, ammenitiesType }) => {
     const len = ammenities?.length;
+    const widthArr = ammenitiesType === "1" ? ["35", "7", "28"] : ["30", "6", "25"];
+
     return (
         <>
             {
@@ -67,9 +75,9 @@ export const AmmenitiesComp: React.FC<UtilityCompInterface> = ({ ammenities }) =
                             {
                                 ammenities?.slice(0, 3).map((ele, ind) => {
                                     return (
-                                        <div className='h-full w-35 flex mr-2' key={ind}>
-                                            <span className='h-full w-7 flex justify-start items-center'><i>{ele?.at(1)} x</i></span>
-                                            <span className='h-full w-28 flex justify-start items-center'><i>{ele?.at(0)}</i></span>
+                                        <div className={`h-full w-${widthArr[0]} flex mr-2`} key={ind}>
+                                            <span className={`h-full w-${widthArr[1]} flex justify-start items-center`}><i>{ele?.at(1)} x</i></span>
+                                            <span className={`h-full w-${widthArr[2]} flex justify-start items-center`}><i>{ele?.at(0)}</i></span>
                                         </div>
                                     );
                                 })
@@ -81,9 +89,9 @@ export const AmmenitiesComp: React.FC<UtilityCompInterface> = ({ ammenities }) =
                                 {
                                     ammenities?.slice(3).map((ele, ind) => {
                                         return (
-                                            <div className='h-full w-35 flex mr-2' key={ind}>
-                                                <span className='h-full w-7 flex justify-start items-center'><i>{ele?.at(1)} x</i></span>
-                                                <span className='h-full w-28 flex justify-start items-center'><i>{ele?.at(0)}</i></span>
+                                            <div className={`h-full w-${widthArr[0]} flex mr-2`} key={ind}>
+                                                <span className={`h-full w-${widthArr[1]} flex justify-start items-center`}><i>{ele?.at(1)} x</i></span>
+                                                <span className={`h-full w-${widthArr[2]} flex justify-start items-center`}><i>{ele?.at(0)}</i></span>
                                             </div>
                                         );
                                     })
