@@ -1,11 +1,9 @@
 import React from 'react'
 import { auth, signOut } from "../../../auth";
-import { notFound } from "next/navigation";
 
 const PageONE = async () => {
-    const session = await auth();
-    // if (!session) return notFound();
-    console.log("session: ", session);
+    // const session = await auth();
+    // console.log("session: ", session);
     return (
         <form
             action={async () => {

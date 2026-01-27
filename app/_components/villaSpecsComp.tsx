@@ -44,17 +44,42 @@ const TitleComp: React.FC<UtilityCompInterface> = ({ name, area, rating }) => {
 }
 
 const SpecDetailComp: React.FC<UtilityCompInterface> = ({ cost, ammenities }) => {
-    const len = ammenities?.length;
-
     return (
         <div className='h-25 w-full flex py-3 text-gray-600'>
             <div className='h-full w-115 flex flex-col justify-start '>
-                {
-                    len !== undefined && len !== 0 ?
-                        <>
-                            <div className='h-8 w-full flex justify-start'>
+                <AmmenitiesComp ammenities={ammenities} />
+            </div>
+            <div className='h-full w-25 flex items-end font-extrabold text-[18px]'>
+                Rs. {cost}
+            </div>
+        </div>
+    )
+}
+
+export const AmmenitiesComp: React.FC<UtilityCompInterface> = ({ ammenities }) => {
+    const len = ammenities?.length;
+    return (
+        <>
+            {
+                len !== undefined && len !== 0 ?
+                    <>
+                        <div className='h-8 w-full flex justify-start'>
+                            {
+                                ammenities?.slice(0, 3).map((ele, ind) => {
+                                    return (
+                                        <div className='h-full w-35 flex mr-2' key={ind}>
+                                            <span className='h-full w-7 flex justify-start items-center'><i>{ele?.at(1)} x</i></span>
+                                            <span className='h-full w-28 flex justify-start items-center'><i>{ele?.at(0)}</i></span>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
+                        {(len > 3)
+                            &&
+                            <div className='h-8 w-full flex justify-start '>
                                 {
-                                    ammenities?.slice(0, 3).map((ele, ind) => {
+                                    ammenities?.slice(3).map((ele, ind) => {
                                         return (
                                             <div className='h-full w-35 flex mr-2' key={ind}>
                                                 <span className='h-full w-7 flex justify-start items-center'><i>{ele?.at(1)} x</i></span>
@@ -64,29 +89,11 @@ const SpecDetailComp: React.FC<UtilityCompInterface> = ({ cost, ammenities }) =>
                                     })
                                 }
                             </div>
-                            {(len > 3)
-                                &&
-                                <div className='h-8 w-full flex justify-start '>
-                                    {
-                                        ammenities?.slice(3).map((ele, ind) => {
-                                            return (
-                                                <div className='h-full w-35 flex mr-2' key={ind}>
-                                                    <span className='h-full w-7 flex justify-start items-center'><i>{ele?.at(1)} x</i></span>
-                                                    <span className='h-full w-28 flex justify-start items-center'><i>{ele?.at(0)}</i></span>
-                                                </div>
-                                            );
-                                        })
-                                    }
-                                </div>
-                            }
-                        </>
-                        : null
-                }
-            </div>
-            <div className='h-full w-25 flex items-end font-extrabold text-[18px]'>
-                Rs. {cost}
-            </div>
-        </div>
+                        }
+                    </>
+                    : null
+            }
+        </>
     )
 }
 

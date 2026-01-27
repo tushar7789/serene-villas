@@ -13,21 +13,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
  },
  callbacks: {
   async jwt({ token, user, account }) {
-    // console.log("account in jwt: ", {account, user, token});
+    console.log("account in jwt: ", {account, user, token});
     if (account) {
         token.accessToken = account.access_token;
     }
     if(user) {
         token.id = user.id;
-    }
-    if(user?.email){
-        // func(user);
+        token.email = user.email
     }
     return token;
   },
 
   async session({ session, token }) {
-    // console.log("account in session: ", {session, token});
+    console.log("account in session: ", {session, token});
     session.user.id = token.id as string;
     (session.user as any).accessToken = token.accessToken; // eslint-disable-line @typescript-eslint/no-explicit-any
 

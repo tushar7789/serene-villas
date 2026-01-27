@@ -37,7 +37,8 @@ function VillaId() {
                         <Image src={CabinImg.src} height={350} width={420} alt="" style={{ borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
                         <div className='h-56.25 w-full flex flex-col justify-between items-center border-r-0 border-r-black'>
                             <div className='h-40 w-full px-5 py-2 text-[14px] bg-amber-500'>
-                                NOt Anymore,,,{villaDetails !== null ? villaDetails.area : "womp womp"}
+
+                                {/* {villaDetails !== null ? villaDetails.area : "womp womp"} */}
                             </div>
                             <Divider variant="middle" flexItem />
                             <p className='h-10 w-full px-5 flex justify-between text-[20px] bg-blue-500'>
