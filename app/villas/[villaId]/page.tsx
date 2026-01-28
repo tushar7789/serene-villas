@@ -50,9 +50,14 @@ function VillaId() {
                     </div>
                     <Image src={AlbumIcon.src} alt="" height={30} width={30} style={{ position: 'relative', zIndex: '10', bottom: '210px', right: '50px', cursor: 'pointer' }} onClick={handleAlbumOverlayOpen} />
                     <div className='h-full w-125 flex flex-col items-start justify-between '>
-                        <span className='h-min w-full text-[100px]'>
-                            Villa #{id}
-                        </span>
+                        <div className='h-70 w-full flex flex-col justify-start items-center'>
+                            <span className='h-15 w-full px-4 flex items-center text-[30px]'>
+                                Description
+                            </span>
+                            <span className='h-40 w-full px-4 flex items-center text-justify overflow-x-clip'>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga officia cupiditate nam ex quam nulla, ad soluta optio distinctio asperiores, odio praesentium eveniet iste doloremque deleniti expedita magni assumenda reiciendis.
+                            </span>
+                        </div>
                         <div className='h-40 w-full px-5 flex flex-col justify-evenly items-center'>
                             <Button to="/" type="boundary-button">Add to Wishlist</Button>
                             <Button to="/" type="boundary-button">Book</Button>
