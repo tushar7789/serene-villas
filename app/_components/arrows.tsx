@@ -18,9 +18,9 @@ export default function Arrow({ type, mode, dimension }: modeType) {
             {
                 type === undefined ?
                     mode === "left" ?
-                        <Image src={Left} height={dim} width={dim} alt="left" /> :
+                        <Image src={Left} height={dim} width={dim} alt="left" className="cursor-pointer" /> :
                         mode === "right" ?
-                            <Image src={Right} height={dim} width={dim} alt="right" /> :
+                            <Image src={Right} height={dim} width={dim} alt="right" className="cursor-pointer" /> :
                             mode === "up" ?
                                 <Image src={Left} height={dim} width={dim} alt="right" className="cursor-pointer rotate-90" /> :
                                 <Image src={Right} height={dim} width={dim} alt="right" className="cursor-pointer rotate-90" />

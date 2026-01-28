@@ -66,12 +66,6 @@ const Villas = () => {
                         }
                     </div>
                 </div>
-                {/* <div className="h-45 w-screen px-40 flex items-center justify-start bg-linear-to-r from-gray-50 to-gray-100 sticky top-0 z-20">
-                <FilterPanel />
-            </div> */}
-                {/* <div className="h-min w-screen mb-20 flex flex-col justify-start items-center">
-
-                </div > */}
             </div>
             <Footer />
         </>
