@@ -8,8 +8,6 @@ export const metadata: Metadata = {
   description: "Rich with natural intimacy",
 };
 
-
-// const inter = Inter({ subsets: ['latin'], weight: ['400', '600'] })
 const poppins = Poppins({ subsets: ['latin'], weight: ['400'] })
 
 export default function RootLayout({

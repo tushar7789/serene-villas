@@ -9,9 +9,8 @@ import { OverlayPropsInterface } from '../_interfaces/component_interfaces';
 const SigninModal: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 
     const handleOverlayClose = () => {
-        console.log("lcosing::::::");
         if (callbackSetter !== undefined) {
-            callbackSetter(s => !s);
+            callbackSetter();
         }
     }
 

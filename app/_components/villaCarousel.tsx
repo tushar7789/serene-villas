@@ -34,7 +34,7 @@ const VillaCarousel: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 
     const handleOverlayClose = () => {
         if (callbackSetter !== undefined) {
-            callbackSetter(s => !s);
+            callbackSetter();
         }
     }
 

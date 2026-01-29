@@ -1,19 +1,16 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { usePathname } from 'next/navigation';
 import Divider from '@mui/material/Divider';
 import Button from './button';
-// import { signOut } from '../../auth';
-import { signOut, useSession } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 
 import { OverlayPropsInterface } from '../_interfaces/component_interfaces';
 
 
 const Navigation: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
     const pathname = usePathname().split('/')[1];
-    // const { data, status } = useSession();
-    // console.log("sesssssstttt:,", { data, status });
 
     return (
         <>

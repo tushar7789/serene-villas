@@ -1,36 +1,26 @@
 'use client'
 
-import React, { useState, useContext } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Divider from '@mui/material/Divider';
 
 import Button from '../../_components/button';
-import Overlay from '../../_components/overlay'
 import { AmmenitiesComp, TitleComp } from '../../_components/villaSpecsComp';
 import Footer from '../../_components/footer';
 import BackNav from '../../_components/backNav';
 
 import CabinImg from "../../../public/static_images/balcony-i.png"
 import AlbumIcon from "../../../public/static_images/album-icon.png"
-
-import { RootContext } from '../../_components/rootProvider';
+import useOverlayFlagsStore from '../../_store/overlayFlagsStore';
 
 function VillaId() {
-    const pathname = usePathname();
-    const id = pathname.split("/")[2];
-
     const villaDetailsString = useSearchParams().get('villaDetails');
     const villaDetails = villaDetailsString !== null ? JSON.parse(villaDetailsString) : null;
 
-
-    const [overlayState, setOverlayState] = useState(false);
-    const { callbackSetter } = useContext(RootContext);
+    const setAlbumOverlayFlag = useOverlayFlagsStore((state) => state.setAlbumOverlayFlag);
 
     const handleAlbumOverlayOpen = () => {
-        if (callbackSetter !== undefined) {
-            callbackSetter(s => !s);
-        }
+        setAlbumOverlayFlag();
     }
 
     return (
@@ -73,11 +63,6 @@ function VillaId() {
                 <RecommendedComp />
             </div>
             <Footer />
-            {/* {
-                overlayState ?
-                    <Overlay type="form" callbackSetter={setOverlayState} /> :
-                    null
-            } */}
         </>
     )
 }

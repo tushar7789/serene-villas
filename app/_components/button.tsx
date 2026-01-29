@@ -2,17 +2,31 @@
 
 import React, { MouseEvent } from 'react'
 import Link from 'next/link'
-import { ButtonPropInterface } from '../_interfaces/component_interfaces'
+
+import { VillaType } from '../_store/villaDataStore'
+
+interface ButtonPropInterface {
+    children: React.ReactNode;
+    to?: string,
+    type: string,
+    callbackSetter?: () => void,
+    key?: React.Key,
+    height?: string,
+    width?: string,
+    villaDetails?: VillaType
+}
 
 function Button({ children, to, height, width, type, callbackSetter, villaDetails }: ButtonPropInterface) {
     const hg = `${height !== undefined ? `h-${height}` : "h-15"}`
     const wt = `${width !== undefined ? `w-${width}` : "w-full"}`
+    const regex = /^villas\/\d+$/;
 
     function handleClick(e: MouseEvent) {
-        if (type === 'booking' || type === 'secondary') {
+        if (to === '/signin') {
+            e.preventDefault();
             if (callbackSetter !== undefined) {
-                e.preventDefault();
-                callbackSetter(s => !s);
+                console.log("inside condition");
+                callbackSetter();
             }
         }
     }
@@ -21,7 +35,7 @@ function Button({ children, to, height, width, type, callbackSetter, villaDetail
         <Link
             href={{
                 pathname: to === undefined ? "/" : to,
-                query: { villaDetails: JSON.stringify(villaDetails) }
+                query: to !== undefined ? regex.test(to) ? { villaDetails: JSON.stringify(villaDetails) } : null : null
             }}
             className={`
                 flex 

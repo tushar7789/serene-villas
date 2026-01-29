@@ -9,7 +9,7 @@ function Overlay({ type, callbackSetter }: OverlayPropsInterface) {
 
     function handleClick() {
         if (callbackSetter !== undefined)
-            callbackSetter(s => !s);
+            callbackSetter();
     }
 
     return (
