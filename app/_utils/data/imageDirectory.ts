@@ -22,12 +22,14 @@ import CampusEntryImage from "../../../public/static_images/campus-entry.png"
 import CampusAmenitiesImage from "../../../public/static_images/campus-amenities.png"
 import CampusDiningImage from "../../../public/static_images/campus-dining.png"
 
+import GoogleIcon from "../../../public/static_images/google-icon.png"
+
 const ImageList = [
-    [LivingRoomImg, "Living Room"],
-    [BedroomImg, "Bedroom"],
-    [KitchenImg, "Kitchen"],
-    [BathroomImg, "Bathroom"],
-    [BalconyImg, "Balcony"]
+    ["Living Room", LivingRoomImg],
+    ["Bedroom", BedroomImg],
+    ["Kitchen", KitchenImg],
+    ["Bathroom", BathroomImg],
+    ["Balcony", BalconyImg]
 ];
 
 
@@ -54,4 +56,8 @@ const DetailsCardImages = [
     CampusDiningImage
 ]
 
-export { ImageList, FeaturesImageList, FooterLogoList, DetailsCardImages };
+const SignInOptionsList = [
+    ["Google", GoogleIcon]
+]
+
+export { ImageList, FeaturesImageList, FooterLogoList, DetailsCardImages, SignInOptionsList };

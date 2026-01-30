@@ -40,14 +40,14 @@ const VillaCarousel: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 
     return (
         <div className='z-30 absolute h-screen w-screen bg-black/70 text-[50px] flex flex-col items-center justify-center'>
-            <div className='z-40 relative top-[55px] h-[50px] w-[720px] px-[20px] flex items-center justify-end'>
+            <div className='z-40 relative top-13.75 h-12.5 w-180 px-5 flex items-center justify-end'>
                 <Image src={Cross.src} height={40} width={40} alt="" style={{ cursor: 'pointer' }} onClick={handleOverlayClose} />
             </div>
             <Carousel
                 infinite={false}
                 className='
-                        h-[420px] 
-                        w-[720px]
+                        h-105 
+                        w-180
                     '
                 ref={carouselRef}
             >
@@ -59,15 +59,15 @@ const VillaCarousel: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
                                     style={{
                                         borderRadius: '8px'
                                     }}
-                                    src={img[0]}
-                                    alt={img[1].toString()}
+                                    src={img[1]}
+                                    alt={img[0].toString()}
                                 />
                             </div>
                         );
                     })
                 }
             </Carousel>
-            <div className='z-40 relative bottom-[65px] h-[50px] w-[720px] px-[26px] flex items-center justify-between'>
+            <div className='z-40 relative bottom-16.25 h-12.5 w-180 px-6.5 flex items-center justify-between'>
                 {
                     curLabelInd !== 0 ?
                         <Image src={LeftArrow.src} height={35} width={35} alt="" style={{ cursor: 'pointer' }} onClick={handlePrev} />
