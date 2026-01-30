@@ -8,27 +8,27 @@ export default function Home() {
     <>
       <div className="
             w-screen 
-            h-[380px] 
-            px-[150px] 
+            h-95 
+            px-37.5
             flex 
             flex-col 
             justify-start 
             items-center
-            bg-gradient-to-r 
+            bg-linear-to-r 
             from-gray-50 
             to-gray-100">
-        <div className="h-[140px] w-full flex flex-col justify-center items-start">
-          <span className="h-[40px] w-full font-bold text-2xl">
+        <div className="h-35 w-full flex flex-col justify-center items-start">
+          <span className="h-10 w-full font-bold text-2xl">
             Now, get a Villa for 4 at 35% off
           </span>
-          <span className="h-[30px] w-full flex flex-row items-center text-sm">
+          <span className="h-7.5 w-full flex flex-row items-center text-sm">
             Offers valid until &nbsp; <i>31st December</i>
           </span>
         </div>
-        <div className="h-[130px] w-full">
+        <div className="h-32.5 w-full">
           <DatesInputBox />
         </div>
-        <div className="h-[110px] w-full  flex flex-row justify-around items-center">
+        <div className="h-27.5 w-full  flex flex-row justify-around items-center">
           <Features />
         </div>
       </div>

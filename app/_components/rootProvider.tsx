@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { SessionProvider, useSession } from 'next-auth/react'
+import { SessionProvider } from 'next-auth/react'
 import Navigation from './navigation';
 import SigninModal from './signinModal';
 import { RootProviderInterface } from '../_interfaces/component_interfaces';

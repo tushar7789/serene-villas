@@ -3,7 +3,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function Loading() {
     return (
-        <CircularProgress />
+        <div className='h-screen w-screen flex justify-center items-center'>
+            <CircularProgress color="success" />
+        </div>
     )
 }
 

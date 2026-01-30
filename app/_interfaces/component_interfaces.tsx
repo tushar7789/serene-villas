@@ -1,6 +1,6 @@
 export interface OverlayPropsInterface {
     type?: string,
-    callbackSetter?: () => void
+    callbackSetter?: () => void,
 }
 
 export interface DatePickerInterface {

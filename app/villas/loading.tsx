@@ -1,9 +1,11 @@
-import Overlay from '../_components/overlay'
 import React from 'react'
+import CircularProgress from '@mui/material/CircularProgress';
 
 function loading() {
     return (
-        <Overlay type="loading" />
+        <div className='h-screen w-screen flex justify-center items-center'>
+            <CircularProgress color="success" />
+        </div>
     )
 }
 

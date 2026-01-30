@@ -42,9 +42,9 @@ function Button({ children, to, height, width, type, callbackSetter, villaDetail
                 flex-row 
                 items-center
                 ${type === "primary"
-                    ? 'w-[var(--primary-button-width)] h-[var(--primary-button-height)] justify-start ml-[10px] text-[22px] italic'
+                    ? 'w-[var(--primary-button-width)] h-[var(--primary-button-height)] justify-start text-[22px] italic'
                     : type === "secondary"
-                        ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)]  hover:bg-emerald-600 hover:text-white justify-center'
+                        ? 'w-[var(--secondary-button-width)] h-[var(--secondary-button-height)] mx-1  hover:bg-emerald-600 hover:text-white justify-center'
                         : type === 'search'
                             ? 'w-[170px] h-[40px] cursor-pointer justify-center bg-emerald-600 rounded-sm'
                             : type === 'booking'

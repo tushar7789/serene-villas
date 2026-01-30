@@ -2,8 +2,8 @@ import React from 'react'
 import { auth, signOut } from "../../../auth";
 
 const PageONE = async () => {
-    // const session = await auth();
-    // console.log("session: ", session);
+    const session = await auth();
+    console.log("session: ", session);
     return (
         <form
             action={async () => {
