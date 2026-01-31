@@ -17,6 +17,7 @@ const SigninModal: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 
     const handleSignInOptionClick = (signInOption: string) => {
         if (signInOption === "Google") {
+            localStorage.setItem("redirectReason", "signin");
             signIn(signInOption);
         }
     }

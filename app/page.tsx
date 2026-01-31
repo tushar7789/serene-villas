@@ -2,10 +2,25 @@ import Features from "./_components/featuresBanner";
 import DatesInputBox from "./_components/datesInputBox";
 import DetailsContainer from "./_components/detailsContainer";
 import Footer from "./_components/footer";
+import { auth } from "../auth";
+import NotificationComp from "./_components/notificationComp";
 
-export default function Home() {
+export default async function Home({ searchParams }: { searchParams: { redirectedFrom?: string } }) {
+  // const session = await auth();
+  // const wasRedirected = !!searchParams.redirectedFrom;
+  // console.log("wasRedirected: ", wasRedirected, "search params", searchParams);
+  // const redirectReason = localStorage.getItem("redirectReason");
+
   return (
     <>
+      {/* {
+        localStorage.getItem("redirectReason") !== undefined ?
+          localStorage.getItem("redirectReason") === "signin" ?
+            <NotificationComp type="signin" /> :
+            <NotificationComp type="signout" /> :
+          null
+      } */}
+      <NotificationComp />
       <div className="
             w-screen 
             h-95 

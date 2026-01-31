@@ -1,8 +1,9 @@
 'use client'
 
 import React from 'react'
-import { SessionProvider } from 'next-auth/react'
 import Navigation from './navigation';
+
+
 import SigninModal from './signinModal';
 import { RootProviderInterface } from '../_interfaces/component_interfaces';
 import VillaCarousel from './villaCarousel';
@@ -17,7 +18,7 @@ const RootProvider: React.FC<RootProviderInterface> = ({ child }) => {
     const setAlbumOverlayFlag = useOverlayFlagsStore((state) => state.setAlbumOverlayFlag);
 
     return (
-        <SessionProvider>
+        <>
             <Navigation callbackSetter={setSignInOverlayFlag} />
             <div className={`flex-1 overflow-x-hidden scroll-m-0 z-10`}>
                 {child}
@@ -30,7 +31,7 @@ const RootProvider: React.FC<RootProviderInterface> = ({ child }) => {
                 albumOverlayFlag ?
                     <VillaCarousel callbackSetter={setAlbumOverlayFlag} /> : null
             }
-        </SessionProvider>
+        </>
     )
 }
 

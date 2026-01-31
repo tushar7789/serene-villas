@@ -21,7 +21,10 @@ interface ProfileCompInterface {
 const items: MenuProps['items'] = [
     {
         label: (
-            <Link href="" onClick={() => signOut()}>
+            <Link href="" onClick={() => {
+                localStorage.setItem("redirectReason", "signout");
+                signOut();
+            }}>
                 Sign Out
             </Link>
         ),
