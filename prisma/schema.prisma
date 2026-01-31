@@ -13,31 +13,31 @@ model User {
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
-  accounts      Account[]
+  // accounts      Account[]
   // sessions      Session[]
 
   @@map("Users")
 }
 
-model Account {
-  id                String  @id @default(cuid()) @map("_id")
-  userId            String  @map("user_id")
-  type              String
-  provider          String
-  providerAccountId String  @map("provider_account_id")
-  refresh_token     String? @db.String
-  access_token      String? @db.String
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.String
-  session_state     String?
+// model Account {
+//   id                String  @id @default(cuid()) @map("_id")
+//   userId            String  @map("user_id")
+//   type              String
+//   provider          String
+//   providerAccountId String  @map("provider_account_id")
+//   refresh_token     String? @db.String
+//   access_token      String? @db.String
+//   expires_at        Int?
+//   token_type        String?
+//   scope             String?
+//   id_token          String? @db.String
+//   session_state     String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
-  @@map("Accounts")
-}
+//   @@unique([provider, providerAccountId])
+//   @@map("Accounts")
+// }
 
 model Villas {
   id          String           @id @default(auto()) @map("_id") @db.ObjectId

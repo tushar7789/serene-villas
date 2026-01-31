@@ -3,7 +3,7 @@
 import React, { MouseEvent } from 'react'
 import Link from 'next/link'
 
-import { VillaType } from '../_store/villaDataStore'
+import { VillaType } from '../store/villaDataStore'
 
 interface ButtonPropInterface {
     children: React.ReactNode;

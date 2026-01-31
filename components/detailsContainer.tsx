@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { DetailsCardImages } from '../_utils/data/imageDirectory'
+import { DetailsCardImages } from '../utils/data/imageDirectory'
 
 const DetailsContainer = () => {
     const s: string = typeof (DetailsCardImages[0]);

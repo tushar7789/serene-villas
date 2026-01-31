@@ -10,7 +10,7 @@ import { signOut, useSession } from 'next-auth/react'
 import { Avatar, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
 
-import { OverlayPropsInterface } from '../_interfaces/component_interfaces';
+import { OverlayPropsInterface } from '../interfaces/component_interfaces';
 
 
 interface ProfileCompInterface {

@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { DatePicker } from 'antd';
 import Divider from '@mui/material/Divider';
 
-import Arrow from '../_components/arrows';
-import getTodaysDate from '../_utils/functions/timeAndDate';
+import Arrow from './arrows';
+import getTodaysDate from '../utils/functions/timeAndDate';
 import Button from './button';
-import { filteredVillaFunction, clearFilterValues } from "../_utils/functions/filterPanelFunctions";
+import { filteredVillaFunction, clearFilterValues } from "../utils/functions/filterPanelFunctions";
 
 interface FilterPanelUtillityInterface {
     children?: React.ReactNode,

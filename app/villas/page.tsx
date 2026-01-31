@@ -5,13 +5,13 @@ import Image from "next/image";
 import Divider from '@mui/material/Divider';
 
 import Cabin_1 from "../../public/static_images/living-room-i.png";
-import Button from "../_components/button";
-import VillaSpecsComp from "../_components/villaSpecsComp";
-import FilterPanel from "../_components/filterPanel";
-import useAllVillaDataStore from "../_store/villaDataStore";
-import { VillaType } from "../_store/villaDataStore";
-import { fetchAllVillasFunction } from "../_utils/functions/fetchAllVillasFunction";
-import Footer from "../_components/footer";
+import Button from "../../components/button";
+import VillaSpecsComp from "../../components/villaSpecsComp";
+import FilterPanel from "../../components/filterPanel";
+import useAllVillaDataStore from "../../store/villaDataStore";
+import { VillaType } from "../../store/villaDataStore";
+import { fetchAllVillasFunction } from "../../utils/functions/fetchAllVillasFunction";
+import Footer from "../../components/footer";
 
 const Villas = () => {
     const allVillas = useAllVillaDataStore((state) => state.allVillas);

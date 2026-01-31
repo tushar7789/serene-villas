@@ -5,9 +5,9 @@ import Navigation from './navigation';
 
 
 import SigninModal from './signinModal';
-import { RootProviderInterface } from '../_interfaces/component_interfaces';
+import { RootProviderInterface } from '../interfaces/component_interfaces';
 import VillaCarousel from './villaCarousel';
-import useOverlayFlagsStore from '../_store/overlayFlagsStore';
+import useOverlayFlagsStore from '../store/overlayFlagsStore';
 
 
 

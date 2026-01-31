@@ -4,14 +4,14 @@ import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Divider from '@mui/material/Divider';
 
-import Button from '../../_components/button';
-import { AmmenitiesComp, TitleComp } from '../../_components/villaSpecsComp';
-import Footer from '../../_components/footer';
-import BackNav from '../../_components/backNav';
+import Button from '../../../components/button';
+import { AmmenitiesComp, TitleComp } from '../../../components/villaSpecsComp';
+import Footer from '../../../components/footer';
+import BackNav from '../../../components/backNav';
 
 import CabinImg from "../../../public/static_images/balcony-i.png"
 import AlbumIcon from "../../../public/static_images/album-icon.png"
-import useOverlayFlagsStore from '../../_store/overlayFlagsStore';
+import useOverlayFlagsStore from '../../../store/overlayFlagsStore';
 
 function VillaId() {
     const villaDetailsString = useSearchParams().get('villaDetails');

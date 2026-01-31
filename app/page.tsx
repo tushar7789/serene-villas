@@ -1,9 +1,9 @@
-import Features from "./_components/featuresBanner";
-import DatesInputBox from "./_components/datesInputBox";
-import DetailsContainer from "./_components/detailsContainer";
-import Footer from "./_components/footer";
+import Features from "../components/featuresBanner";
+import DatesInputBox from "../components/datesInputBox";
+import DetailsContainer from "../components/detailsContainer";
+import Footer from "../components/footer";
 import { auth } from "../auth";
-import NotificationComp from "./_components/notificationComp";
+import NotificationComp from "../components/notificationComp";
 
 export default async function Home({ searchParams }: { searchParams: { redirectedFrom?: string } }) {
   // const session = await auth();

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { FeaturesImageList } from "../_utils/data/imageDirectory"
+import { FeaturesImageList } from "../utils/data/imageDirectory"
 
 const Features = () => {
     return (
