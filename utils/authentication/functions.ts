@@ -5,7 +5,7 @@ export const userExsits = (email : string) => {
         {where: {email}}
     );
 
-    if(!user) return false;
-    
+    if(user === null || user === undefined) return false;
+
     return true;
 }

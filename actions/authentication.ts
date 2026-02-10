@@ -9,14 +9,7 @@ export const createUserSchema = z.object({
   password: z.string().min(6) 
 })
 
-export async function createUser(formData: FormData) {
-  const validated = createUserSchema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password")
-  })
-  if (!validated.success) throw new Error("Invalid fields")
-
-  const { email, password } = validated.data
+export async function createUser(email : string, password : string) {
   const hashedPassword = await argon2.hash(password, {
     type: argon2.argon2id,                      // Hybrid variant: best security/performance
     memoryCost: 2**16,                          // 64 MiB (adjust: 19k+ KiB recommended)
@@ -37,9 +30,8 @@ export async function signUpFunction(formData : FormData) {
     })
     if (!validated.success) throw new Error("Invalid fields!")
 
-    const { email } = validated.data
+    const { email,password } = validated.data
     
-    if(!userExsits(email)) throw Error("Account with the email already exists!");
-
-    createUser(formData);
+    if(userExsits(email)) throw Error("Account with the email already exists!");
+    else createUser(email, password);
 }
