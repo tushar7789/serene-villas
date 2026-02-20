@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import Star from "../../public/static_images/star.png"
+import Star from "../public/static_images/star.png"
 import { VillaType } from '../store/villaDataStore'
 
 type UtilityCompInterface = {

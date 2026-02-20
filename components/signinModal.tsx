@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 
-import Cross from "../../public/static_images/cross.png"
+import Cross from "../public/static_images/cross.png"
 import { OverlayPropsInterface } from '../interfaces/component_interfaces';
 import { SignInOptionsList } from '../utils/data/imageDirectory';
 

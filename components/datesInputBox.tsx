@@ -5,7 +5,7 @@ import type { DatePickerProps } from 'antd';
 import { DatePicker } from 'antd';
 
 import Button from './button';
-import GroupIcon from '../../public/static_images/group.png';
+import GroupIcon from '../public/static_images/group.png';
 
 // const onChange: DatePickerProps['onChange'] = (date, dateString) => {
 //     console.log(date, dateString);

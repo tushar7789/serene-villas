@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image';
 
 import { OverlayPropsInterface } from '../interfaces/component_interfaces';
-import Close from "../../public/static_images/close.png"
+import Close from "../public/static_images/close.png"
 import LoginForm from './loginform';
 
 function Overlay({ type, callbackSetter }: OverlayPropsInterface) {

@@ -20,7 +20,7 @@ const NotificationComp = () => {
     useEffect(() => {
         const redirectReason = localStorage.getItem("redirectReason");
         if (redirectReason !== null) {
-            const msg = `${redirectReason === "signin" ? "You've signed in" : "You've signed Out"}`
+            const msg = `${redirectReason === "signin" ? "You've signed in" : "You've signed out"}`
             success(msg);
         }
 

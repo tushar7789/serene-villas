@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Left from "../../public/static_images/left-arrow.png";
-import Right from "../../public/static_images/right-arrow.png";
-import FilterTagArrow from "../../public/static_images/arrow.png"
-import FilterDirArrow from "../../public/static_images/filter-arrow.png"
+import Left from "../public/static_images/left-arrow.png";
+import Right from "../public/static_images/right-arrow.png";
+import FilterTagArrow from "../public/static_images/arrow.png"
+import FilterDirArrow from "../public/static_images/filter-arrow.png"
 
 type modeType = {
     type?: string,

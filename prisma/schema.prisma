@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("DIRECT_DATABASE_URL")
 }
 
 model User {
@@ -16,11 +15,35 @@ model User {
   image           String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  booking         Booking[]
   // accounts      Account[]
   // sessions      Session[]
 
-  @@map("Users")
 }
+
+model Villa {
+  id          String           @id @default(auto()) @map("_id") @db.ObjectId
+  area        String
+  cost        Int
+  name        String
+  rating      Int
+  villaNumber Int
+  ammenities  Json?
+  booing      Booking[]
+}
+
+
+model Booking {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  from        String
+  to          String
+  status      String
+  user        User          @relation(fields: [userId], references: [id])
+  villa       Villa         @relation(fields: [villaId], references: [id])
+  villaId     String        @db.ObjectId
+  userId      String          
+}
+
 
 // model Account {
 //   id                String  @id @default(cuid()) @map("_id")
@@ -41,13 +64,3 @@ model User {
 //   @@unique([provider, providerAccountId])
 //   @@map("Accounts")
 // }
-
-model Villas {
-  id          String           @id @default(auto()) @map("_id") @db.ObjectId
-  area        String
-  cost        Int
-  name        String
-  rating      Int
-  villaNumber Int
-  ammenities  Json?
-}
