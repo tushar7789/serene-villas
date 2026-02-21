@@ -17,23 +17,26 @@ export const authConfig: NextAuthConfig = {
     }),
     Credentials({
       credentials: { email: {}, password: {} },
+
       async authorize(credentials) {
-        const validated = loginSchema.safeParse(credentials)
+        const validated = loginSchema.safeParse(credentials);
         if (!validated.success) {
-          throw new AuthError("Invalid email or password format");
+          throw new AuthError("Invalid email or password");
         }
 
-        const { email, password } = validated.data
+        const { email, password } = validated.data;
+
         const user = await prisma.user.findUnique({ where: { email } })
         if (!user || !user?.hashedPassword) {
           throw new AuthError("Invalid email or password");
         }
 
-        const passwordsMatch = await argon2.verify(user.hashedPassword, password)
+        const passwordsMatch = await argon2.verify(user.hashedPassword, password);
+
         if (passwordsMatch) {
-          return { id: user.id, email: user.email, name: user.name }
+          return { id: user.id, email: user.email, name: user.name };
         }
-        return null
+        return null;
       }
     })
   ],

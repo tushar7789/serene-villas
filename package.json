@@ -14,11 +14,10 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.6",
     "@mui/material-nextjs": "^7.3.6",
-    "@prisma/client": "^7.4.1",
-    "@prisma/extension-accelerate": "^3.0.1",
     "antd": "^6.1.2",
     "argon2": "^0.44.0",
     "dotenv": "^17.2.3",
+    "mongoose": "^9.2.1",
     "next": "^16.1.1",
     "next-auth": "^5.0.0-beta.30",
     "react": "^19.2.3",
@@ -30,14 +29,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.2.0",
+    "@types/mongoose": "^5.11.96",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.5",
-    "prisma": "^7.4.1",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.2.0",
     "typescript": "^5"
   }
 }
