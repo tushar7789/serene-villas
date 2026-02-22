@@ -10,7 +10,7 @@ import VillaSpecsComp from "../../components/villaSpecsComp";
 import FilterPanel from "../../components/filterPanel";
 import useAllVillaDataStore from "../../store/villaDataStore";
 import { VillaType } from "../../store/villaDataStore";
-import { fetchAllVillasFunction } from "../../utils/functions/fetchAllVillasFunction";
+import { fetchAllVillasFunction } from "../../utils/villa";
 import Footer from "../../components/footer";
 
 const Villas = () => {

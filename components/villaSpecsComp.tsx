@@ -19,10 +19,11 @@ export interface VillaInterface {
 }
 
 const VillaSpecsComp: React.FC<VillaInterface> = ({ villaDetails }) => {
+    console.log("inside villa specs: ", villaDetails);
     return (
         <div className='h-full w-full text-[14px] pt-4'>
             <TitleComp name={villaDetails.name} area={villaDetails.area} rating={villaDetails.rating.toLocaleString()} titleType='1' />
-            <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={villaDetails.ammenities.ammenities} />
+            <SpecDetailComp cost={villaDetails.cost.toLocaleString()} ammenities={villaDetails.ammenities} />
         </div>
     )
 }

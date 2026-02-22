@@ -1,9 +1,5 @@
 import {create} from "zustand";
 
-type AmmenitiesType = {
-    ammenities: string[][]
-}
-
 export type VillaType = {
     id: string,
     area: string,
@@ -11,7 +7,7 @@ export type VillaType = {
     name: string,
     rating: number,
     villaNumber: number,
-    ammenities: AmmenitiesType
+    ammenities: string[][]
 }
 
 type TempTypeOne = {

@@ -1,7 +1,7 @@
 import {NextAuthConfig, AuthError}  from "next-auth";
 import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google";
-import { prisma } from "./prisma"
+import Users from "../models/users";
 import argon2 from "argon2"
 import {z} from "zod"
 
@@ -26,15 +26,15 @@ export const authConfig: NextAuthConfig = {
 
         const { email, password } = validated.data;
 
-        const user = await prisma.user.findUnique({ where: { email } })
-        if (!user || !user?.hashedPassword) {
+        const user = await Users.findOne({email : email});
+        if (!user || !user.hashedPassword) {
           throw new AuthError("Invalid email or password");
         }
 
-        const passwordsMatch = await argon2.verify(user.hashedPassword, password);
+        const passwordsMatch = await argon2.verify(user.hashedPassword as any, password); // eslint-disable-line @typescript-eslint/no-explicit-any
 
         if (passwordsMatch) {
-          return { id: user.id, email: user.email, name: user.name };
+          return { id: user.id, email: user.email, name: user?.name };
         }
         return null;
       }

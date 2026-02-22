@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import { authConfig } from "./lib/auth.config";
+import createNewUser from "./utils/user";
 
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -14,6 +15,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }
     if(user) {
         token.id = user.id;
+        createNewUser(user);
     }
     return token;
   },
