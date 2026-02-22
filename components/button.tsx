@@ -25,7 +25,6 @@ function Button({ children, to, height, width, type, callbackSetter, villaDetail
         if (to === '/signin') {
             e.preventDefault();
             if (callbackSetter !== undefined) {
-                console.log("inside condition");
                 callbackSetter();
             }
         }

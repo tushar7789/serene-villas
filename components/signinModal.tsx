@@ -6,6 +6,7 @@ import { signIn } from 'next-auth/react';
 import Cross from "../public/static_images/cross.png"
 import { OverlayPropsInterface } from '../interfaces/component_interfaces';
 import { SignInOptionsList } from '../utils/data/imageDirectory';
+import { redirect } from 'next/navigation';
 
 const SigninModal: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
 
@@ -19,6 +20,10 @@ const SigninModal: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
         if (signInOption === "Google") {
             localStorage.setItem("redirectReason", "signin");
             signIn(signInOption);
+        } else if (signInOption === 'Email') {
+            console.log('inside email options');
+            handleOverlayClose();
+            redirect('/login');
         }
     }
 

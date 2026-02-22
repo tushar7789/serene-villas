@@ -23,6 +23,7 @@ import CampusAmenitiesImage from "../../public/static_images/campus-amenities.pn
 import CampusDiningImage from "../../public/static_images/campus-dining.png"
 
 import GoogleIcon from "../../public/static_images/google-icon.png"
+import SignInIcon from "../../public/static_images/sign-in.png"
 
 const ImageList = [
     ["Living Room", LivingRoomImg],
@@ -57,7 +58,8 @@ const DetailsCardImages = [
 ]
 
 const SignInOptionsList = [
-    ["Google", GoogleIcon]
+    ["Google", GoogleIcon],
+    ["Email", SignInIcon]
 ]
 
 export { ImageList, FeaturesImageList, FooterLogoList, DetailsCardImages, SignInOptionsList };

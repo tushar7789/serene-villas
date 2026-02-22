@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 import Divider from '@mui/material/Divider';
@@ -80,7 +80,7 @@ const Navigation: React.FC<OverlayPropsInterface> = ({ callbackSetter }) => {
                             session.status === 'loading' ? null :
                                 pathname === 'signin' ?
                                     <Button to='/signin' type="selected">Sign In</Button> :
-                                    <Button to='/signin' type="secondary" callbackSetter={callbackSetter}>Sign In</Button>
+                                    <Button to='/signin' type="secondary" callbackSetter={() => redirect('/signin')}>Sign In</Button>
                     }
                 </li>
             </ul>
