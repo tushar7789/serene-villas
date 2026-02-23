@@ -7,6 +7,7 @@ const createNewUser = async (user : any) => {     // eslint-disable-line @typesc
         const newUser = await Users.create({
             name : user.name,
             email : user.email,
+            hashedPassword : user?.password
         });
 
         return newUser;
@@ -15,4 +16,8 @@ const createNewUser = async (user : any) => {     // eslint-disable-line @typesc
     return null;
 } 
 
-export default createNewUser;
+const createSignUpUser = () => {
+
+}
+
+export {createNewUser, createSignUpUser};
