@@ -31,8 +31,11 @@ const FilterPanel = () => {
     }
 
     return (
-        <div className='h-full w-80 px-5 flex flex-col justify-start bg-gray-50'>
-            <div className='h-18 w-full flex justify-between items-end'>
+        <div className='h-full w-80 px-5 transition delay-150 duration-300 ease-in-out flex flex-col justify-start bg-gray-50'>
+            <div className='h-12 w-full flex items-center justify-end'>
+                <Arrow mode='left' />
+            </div>
+            <div className='h-15 w-full flex justify-between items-center'>
                 <Button type="secondary" callbackSetter={handleApplyFilters}>Apply Filter</Button>
                 <Button type="secondary" callbackSetter={clearFilterValues}>Clear</Button>
             </div>

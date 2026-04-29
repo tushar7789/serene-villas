@@ -33,7 +33,7 @@ function Button({ children, to, height, width, type, callbackSetter, villaDetail
     return (
         <Link
             href={{
-                pathname: to === undefined ? "/" : to,
+                pathname: to === undefined ? null : to,
                 query: to !== undefined ? regex.test(to) ? { villaDetails: JSON.stringify(villaDetails) } : null : null
             }}
             className={`

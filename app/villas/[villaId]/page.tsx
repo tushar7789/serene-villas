@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Divider from '@mui/material/Divider';
@@ -11,11 +12,15 @@ import BackNav from '../../../components/backNav';
 
 import CabinImg from "../../../public/static_images/balcony-i.png"
 import AlbumIcon from "../../../public/static_images/album-icon.png"
+import CartIcon from "../../../public/static_images/check-out.png"
 import useOverlayFlagsStore from '../../../store/overlayFlagsStore';
+
 
 function VillaId() {
     const villaDetailsString = useSearchParams().get('villaDetails');
     const villaDetails = villaDetailsString !== null ? JSON.parse(villaDetailsString) : null;
+
+    const [cart, setCart] = useState(false);
 
     const setAlbumOverlayFlag = useOverlayFlagsStore((state) => state.setAlbumOverlayFlag);
 
@@ -55,7 +60,13 @@ function VillaId() {
                             </span>
                         </div>
                         <div className='h-40 w-full px-5 flex flex-col justify-evenly items-center'>
-                            <Button to="/" type="boundary-button">Add to Wishlist</Button>
+                            <button className='h-15 w-full flex justify-center items-center bg-emerald-600 rounded-xl text-white hover:cursor-pointer' onClick={() => setCart(s => !s)}>
+                                {
+                                    cart ?
+                                        <Image src={CartIcon.src} alt="" height={30} width={30} />
+                                        : "Add to cart"
+                                }
+                            </button>
                             <Button to="/" type="boundary-button">Book</Button>
                         </div>
                     </div>
