@@ -19,6 +19,9 @@ const FilterPanel = () => {
     const [filterValue, setFilterValue] = useState<string>("");
     const [filterDirection, setFilterDirection] = useState<string>("");
 
+    const [panelStatus, setPanelStatus] = useState<boolean>(true);
+    const [delayStatus, setDelayStatus] = useState<boolean>(true);
+
     const handleNoOfVisitorsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (Number(e.currentTarget.value) >= 0 && Number(e.currentTarget.value) <= 8) {
             setNoOfVisitors(e.target.value.toString());
@@ -30,55 +33,108 @@ const FilterPanel = () => {
         filteredVillaFunction(Number(noOfVisitors));
     }
 
+    const handlePanelStatus = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setPanelStatus(st => !st);
+        setTimeout(() => {
+            setDelayStatus(st => !st);
+        }, 350);
+    }
+
     return (
-        <div className='h-full w-80 px-5 transition delay-150 duration-300 ease-in-out flex flex-col justify-start bg-gray-50'>
-            <div className='h-12 w-full flex items-center justify-end'>
-                <Arrow mode='left' />
-            </div>
-            <div className='h-15 w-full flex justify-between items-center'>
-                <Button type="secondary" callbackSetter={handleApplyFilters}>Apply Filter</Button>
-                <Button type="secondary" callbackSetter={clearFilterValues}>Clear</Button>
-            </div>
-            <div className='h-15 w-full my-2 flex justify-end items-center'>
-                <span className='h-full w-6 flex justify-center items-center' onClick={() => setFilterDirection("unc")}>
-                    <Arrow type='filter-dir' mode='up' />
-                </span>
-                <span className='h-full w-6 flex justify-center items-center' onClick={() => setFilterDirection("dec")}>
-                    <Arrow type="filter-dir" mode='down' />
-                </span>
-            </div>
-            <SelectedFiltersComp />
-            <div className='h-min w-full flex flex-col justify-start items-center'>
-                <FilterTagComp title='Filter by Date'>
-                    <div className='h-33 w-full my-2 flex flex-col justify-start items-center'>
-                        <div className='h-15 w-full mb-3 flex-col justify-end' >
-                            <span className='block h-5 w-full text-sm mb-2'><i>From</i></span>
-                            <DatePicker className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} onChange={(date, dateString) => setFrom(dateString)} />
+        <div className={
+            `
+                h-full 
+                ${panelStatus ? "w-80 px-5 bg-gray-50" : "w-8 bg-none"} 
+                transition-[width]
+                duration-300 
+                flex flex-col justify-start 
+            `
+        }>
+
+            {
+                panelStatus ?
+                    <>
+                        <div>
+                            <span
+                                className='h-12 w-full flex items-center justify-end'
+                                onClick={handlePanelStatus}
+                            >
+                                <Arrow mode='left' />
+                            </span>
                         </div>
-                        <div className='h-15 w-full flex-col justify-end' >
-                            <span className='block h-5 w-full text-sm mb-2'><i>To</i></span>
-                            <DatePicker className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} onChange={(date, dateString) => setTo(dateString)} />
+                        <div className={`h-15 w-full flex justify-between items-center`}>
+                            {
+                                delayStatus ?
+                                    <>
+                                        <Button type="secondary" callbackSetter={handleApplyFilters}>Apply Filter</Button>
+                                        <Button type="secondary" callbackSetter={clearFilterValues}>Clear</Button>
+                                    </> : null
+                            }
                         </div>
-                    </div>
-                </FilterTagComp>
-                <FilterTagComp title='Filter by No of Visitors'>
-                    <input type="number" className='block h-8 my-2 w-full bg-gray-50 shadow-xl px-2  focus:outline-2 outline-emerald-500 text-black' value={noOfVisitors} onChange={handleNoOfVisitorsChange} placeholder='0' />
-                </FilterTagComp>
-                <FilterTagComp title='Filter by Ammenities'>
-                    <div className='h-8 w-full my-2 flex flex-col justify-center itmes-center'>
-                        <select name="filter" id="filter" className='h-full w-full px-2 bg-gray-50 shadow-xl' onChange={(e) => setFilterValue(e.currentTarget.value)}>
-                            <option value="Price">Price</option>
-                            <option value="LivingRoom">Living Rooms</option>
-                            <option value="Bathrooms">Bath Rooms</option>
-                            <option value="Balcony">Balcony</option>
-                            <option value="Kitchen">Kitchen</option>
-                        </select>
-                    </div>
-                </FilterTagComp>
-                <FilterTagComp title='Filter by Ratings'>
-                    <input type="number" className='block h-8 my-2 w-full bg-gray-50 shadow-xl px-2  focus:outline-2 outline-emerald-500 text-black' value={noOfVisitors} onChange={handleNoOfVisitorsChange} placeholder='0' />
-                </FilterTagComp>
-            </div>
+                        <div className='h-15 w-full my-2 flex justify-end items-center'>
+                            {
+                                delayStatus ?
+                                    <>
+                                        <span className='h-full w-6 flex justify-center items-center' onClick={() => setFilterDirection("unc")}>
+                                            <Arrow type='filter-dir' mode='up' />
+                                        </span>
+                                        <span className='h-full w-6 flex justify-center items-center' onClick={() => setFilterDirection("dec")}>
+                                            <Arrow type="filter-dir" mode='down' />
+                                        </span>
+                                    </> : null
+                            }
+                        </div>
+                        {
+                            delayStatus ?
+                                <SelectedFiltersComp /> :
+                                null
+                        }
+                        <div className='h-min w-full flex flex-col justify-start items-center'>
+                            {
+                                delayStatus ?
+                                    <>
+                                        <FilterTagComp title='Filter by Date'>
+                                            <div className='h-33 w-full my-2 flex flex-col justify-start items-center'>
+                                                <div className='h-15 w-full mb-3 flex-col justify-end' >
+                                                    <span className='block h-5 w-full text-sm mb-2'><i>From</i></span>
+                                                    <DatePicker className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} onChange={(date, dateString) => setFrom(dateString)} />
+                                                </div>
+                                                <div className='h-15 w-full flex-col justify-end' >
+                                                    <span className='block h-5 w-full text-sm mb-2'><i>To</i></span>
+                                                    <DatePicker className='block h-8 w-full bg-gray-50 shadow-xl px-2 rounded-sm focus:outline-2 outline-green-600 text-black' variant="borderless" placeholder={getTodaysDate()} onChange={(date, dateString) => setTo(dateString)} />
+                                                </div>
+                                            </div>
+                                        </FilterTagComp>
+                                        <FilterTagComp title='Filter by No of Visitors'>
+                                            <input type="number" className='block h-8 my-2 w-full bg-gray-50 shadow-xl px-2  focus:outline-2 outline-emerald-500 text-black' value={noOfVisitors} onChange={handleNoOfVisitorsChange} placeholder='0' />
+                                        </FilterTagComp>
+                                        <FilterTagComp title='Filter by Ammenities'>
+                                            <div className='h-8 w-full my-2 flex flex-col justify-center itmes-center'>
+                                                <select name="filter" id="filter" className='h-full w-full px-2 bg-gray-50 shadow-xl' onChange={(e) => setFilterValue(e.currentTarget.value)}>
+                                                    <option value="Price">Price</option>
+                                                    <option value="LivingRoom">Living Rooms</option>
+                                                    <option value="Bathrooms">Bath Rooms</option>
+                                                    <option value="Balcony">Balcony</option>
+                                                    <option value="Kitchen">Kitchen</option>
+                                                </select>
+                                            </div>
+                                        </FilterTagComp>
+                                        <FilterTagComp title='Filter by Ratings'>
+                                            <input type="number" className='block h-8 my-2 w-full bg-gray-50 shadow-xl px-2  focus:outline-2 outline-emerald-500 text-black' value={noOfVisitors} onChange={handleNoOfVisitorsChange} placeholder='0' />
+                                        </FilterTagComp>
+                                    </> : null
+                            }
+                        </div>
+                    </>
+                    : !delayStatus ?
+                        <div
+                            className='h-30 w-full bg-emerald-600 mt-15 rounded-tr-lg rounded-br-lg flex justify-center items-center'
+                            onClick={handlePanelStatus}
+                        >
+                            <Arrow mode='right' dimension='18' />
+                        </div> : null
+            }
         </div >
     )
 }
